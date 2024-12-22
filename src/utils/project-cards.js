@@ -6,6 +6,8 @@ import passwordGenerator from "../assets/passwordGenerator.png";
 import clothingShop from "../assets/clothingShop.png";
 import learningPlatform from "../assets/learningPlatform.png";
 import voicePcController from "../assets/voicePcController.png";
+import qrCodeGenerator from "../assets/qrCodeGenerator.png";
+import comingSoonTemplate from "../assets/comingSoonTemplate.png";
 import jobPortal from "../assets/jobPortal.png";
 import portfolio from "../assets/portfolio.png";
 import ticTacToe from "../assets/ticTacToe.png";
@@ -152,5 +154,25 @@ export const projects = [
     img: fileZipper,
     alt: "File Zipper",
     skills: ["JavaScript", "Node.js", "File Handling"],
+  },
+  {
+    title: "QR Code Generator",
+    img: qrCodeGenerator,
+    alt: "QR Code Generator",
+    description:
+      "Generate QR Codes To ShowCase And Access All Your Projects Seamlessly.",
+    link: "https://scantoprojects.vercel.app/",
+    codelink: "https://github.com/nishantmakwanaa/qr-code-generator",
+    skills: ["Python", "AI/ML", "Voice Recognition", "Electron.js"],
+  },
+  {
+    title: "Coming Soon Template",
+    img: comingSoonTemplate,
+    alt: "Coming Soon Template",
+    description:
+      "Coming Soon Page Which Can Be Used As Live Link For Those Projects Which Is Not Built 100% For The Production.",
+    link: "https://projectcomingsoon.vercel.app/",
+    codelink: "https://github.com/nishantmakwanaa/coming-soon-template",
+    skills: ["Python", "AI/ML", "Voice Recognition", "Electron.js"],
   },
 ];
