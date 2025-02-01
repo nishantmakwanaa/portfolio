@@ -10,7 +10,7 @@ import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 import Experience from "./components/Experience/Experience";
 import Education from "./components/Education/Education";
-import ProjectDetails from "./components/ProjectDetails/ProjectDetails";
+import ProjectDetails from "./components/Projects/ProjectDetails";
 import styled from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
