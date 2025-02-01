@@ -226,7 +226,7 @@ export const projects = [
     title: "Voice PC Controller",
     date: "2025",
     description: "A Voice-Controlled PC Assistant That Lets You Operate Your Computer Hands-Free.",
-  image: "",
+    image: "",
     tags: ["Python", "AI/ML", "Voice Recognition", "Electron.js"],
     category: "AI",
     github: "https://github.com/nishantmakwanaa/voice-pc-controller",
