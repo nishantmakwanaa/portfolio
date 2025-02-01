@@ -2,7 +2,7 @@ import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { useState } from "react";
 import { darkTheme, lightTheme } from "./utils/Themes";
 import Navbar from "./components/NavBar/NavBar";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Skills from "./components/Skills/Skills";
 import Projects from "./components/Projects/Projects";
@@ -28,6 +28,10 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     font-family: 'Montserrat', sans-serif;
     background-color: ${({ theme }) => theme.bg};
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   ::-webkit-scrollbar {
@@ -65,7 +69,7 @@ function App() {
   const [darkMode, setDarkMode] = useState(true);
   const [openModal, setOpenModal] = useState({ state: false, project: null });
 
-  return (
+ return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <GlobalStyle />
       <Router>
@@ -83,6 +87,8 @@ function App() {
           </Wrapper>
           <Footer />
           {openModal.state && <ProjectDetails openModal={openModal} setOpenModal={setOpenModal} />}
+          <Routes>
+          </Routes>
         </Body>
       </Router>
     </ThemeProvider>

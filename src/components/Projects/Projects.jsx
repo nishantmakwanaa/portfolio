@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
 import { projects } from '../../data/Data';
 import ProjectCard from '../Cards/ProjectCards';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 const Container = styled.div`
     background: linear-gradient(343.07deg, rgba(132, 59, 206, 0.06) 5.71%, rgba(132, 59, 206, 0) 64.83%);
@@ -137,6 +138,10 @@ const Projects = ({ openModal, setOpenModal }) => {
             </Wrapper>
         </Container>
     );
+};
+Projects.propTypes = {
+    openModal: PropTypes.func.isRequired,
+    setOpenModal: PropTypes.func.isRequired,
 };
 
 export default Projects;

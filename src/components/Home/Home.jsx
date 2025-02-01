@@ -1,4 +1,3 @@
-import React from 'react'
 import HeroBgAnimation from './Home-Animation';
 import { HeroContainer, HeroBg, HeroLeftContainer, Img, HeroRightContainer, HeroInnerContainer, TextLoop, Title, Span, SubTitle, ResumeButton } from './Home-Styles';
 import HeroImg from '../../assets/images/profilePicture.jpg'
@@ -14,7 +13,7 @@ const HeroSection = () => {
                 </HeroBg>
                 <HeroInnerContainer >
                     <HeroLeftContainer id="Left">
-                        <Title>Hi, I'm <br /> {Bio.name}</Title>
+                        <Title>Hi, I&apos;m <br /> {Bio.name}</Title>
                         <TextLoop>
                             I Create AI-Enabled
                             <Span>

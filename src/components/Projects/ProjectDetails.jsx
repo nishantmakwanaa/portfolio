@@ -1,6 +1,5 @@
 import { CloseRounded, GitHub, LinkedIn } from '@mui/icons-material';
 import { Modal } from '@mui/material';
-import React from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -201,8 +200,8 @@ const index = ({ openModal, setOpenModal }) => {
                     <Title>{project?.title}</Title>
                     <Date>{project.date}</Date>
                     <Tags>
-                        {project?.tags.map((tag) => (
-                            <Tag>{tag}</Tag>
+                        {project?.tags.map((tag, index) => (
+                            <Tag key={index}>{tag}</Tag>
                         ))}
                     </Tags>
                     <Desc>{project?.description}</Desc>
@@ -210,8 +209,8 @@ const index = ({ openModal, setOpenModal }) => {
                         <>
                             <Label>Members</Label>
                             <Members>
-                                {project?.member.map((member) => (
-                                    <Member>
+                                {project?.member.map((member, index) => (
+                                    <Member key={index}>
                                         <MemberImage src={member.img} />
                                         <MemberName>{member.name}</MemberName>
                                         <a href={member.github} target="new" style={{textDecoration: 'none', color: 'inherit'}}>

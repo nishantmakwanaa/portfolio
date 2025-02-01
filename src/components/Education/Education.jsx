@@ -1,5 +1,3 @@
-
-import React from 'react'
 import styled from 'styled-components'
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
@@ -87,14 +85,14 @@ const Education = () => {
                 </Desc>
                 <TimelineSection>
                     <Timeline>
-                        {education.map((education,index) => (
-                            <TimelineItem >
+                        {education.map((education, index) => (
+                            <TimelineItem key={index}>
                                 <TimelineContent sx={{ py: '12px', px: 2 }}>
-                                    <EducationCard education={education}/>
+                                    <EducationCard education={education} />
                                 </TimelineContent>
                                 <TimelineSeparator>
                                     <TimelineDot variant="outlined" color="secondary" />
-                                    {index !== experiences.length  && <TimelineConnector style={{ background: '#854CE6' }} />}
+                                    {index !== experiences.length && <TimelineConnector style={{ background: '#854CE6' }} />}
                                 </TimelineSeparator>
                             </TimelineItem>
                         ))}

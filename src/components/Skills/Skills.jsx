@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import { skills } from '../../data/Data'
 
@@ -127,12 +126,12 @@ const Skills = () => {
         <Desc>Here Are Some Of My Skills On Which I Have Been Working On For The Past 2 Years.
         </Desc>
         <SkillsContainer>
-          {skills.map((skill) => (
-            <Skill>
+          {skills.map((skill, index) => (
+            <Skill key={index}>
               <SkillTitle>{skill.title}</SkillTitle>
               <SkillList>
-                {skill.skills.map((item) => (
-                  <SkillItem>
+                {skill.skills.map((item, index) => (
+                  <SkillItem key={index}>
                     <SkillImage src={item.image}/>
                     {item.name}
                   </SkillItem>

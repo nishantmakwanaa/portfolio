@@ -1,5 +1,5 @@
-import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const Document = styled.img`
     display: none;
@@ -144,5 +144,15 @@ const EducationCard = ({ education }) => {
         </Card>
     )
 }
+EducationCard.propTypes = {
+    education: PropTypes.shape({
+        img: PropTypes.string.isRequired,
+        school: PropTypes.string.isRequired,
+        degree: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+        grade: PropTypes.string.isRequired,
+        desc: PropTypes.string.isRequired,
+    }).isRequired,
+};
 
 export default EducationCard;

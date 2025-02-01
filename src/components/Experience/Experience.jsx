@@ -1,5 +1,3 @@
-
-import React from 'react'
 import styled from 'styled-components'
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
@@ -84,8 +82,8 @@ const Exoeriecne = () => {
                 </Desc>
                 <TimelineSection>
                     <Timeline>
-                        {experiences.map((experience,index) => (
-                            <TimelineItem>
+                        {experiences.map((experience, index) => (
+                            <TimelineItem key={index}>
                                 <TimelineSeparator>
                                     <TimelineDot variant="outlined" color="secondary" />
                                     {index !== experiences.length - 1 && <TimelineConnector style={{ background: '#854CE6' }} />}

@@ -26,37 +26,38 @@ const Navbar = () => {
       <NavbarContainer>
         <NavLogo to='/'>
           <div style={{ display: "flex", alignItems: "center", color: "white", cursor: 'pointer' }}>
-            <DiCssdeck size="3rem" /> <Span>Nishant'S Portfolio</Span>
+            <DiCssdeck size="3rem" /> <Span>Nishant&apos;S Portfolio</Span>
           </div>
         </NavLogo>
         <MobileIcon>
           <FaBars onClick={() => setIsOpen(!isOpen)} />
         </MobileIcon>
         <NavItems>
-          <NavLink href="#about">About</NavLink>
-          <NavLink href='#skills'>Skills</NavLink>
-          <NavLink href='#experience'>Experience</NavLink>
-          <NavLink href='#projects'>Projects</NavLink>
-          <NavLink href='#education'>Education</NavLink>
+        <NavLink href="#about" smooth style={{ fontWeight: 'bold' }}>About</NavLink>
+        <NavLink href='#skills' smooth style={{ fontWeight: 'bold' }}>Skills</NavLink>
+        <NavLink href='#experience' smooth style={{ fontWeight: 'bold' }}>Experience</NavLink>
+        <NavLink href='#projects' smooth style={{ fontWeight: 'bold' }}>Projects</NavLink>
+        <NavLink href='#education' smooth style={{ fontWeight: 'bold' }}>Education</NavLink>
         </NavItems>
         <ButtonContainer>
-          <GitHubButton href={Bio.github} target="_blank">
+          <GitHubButton href={Bio.github} style={{ fontWeight: 'bold' }} target="_blank">
             GitHub Profile
           </GitHubButton>
         </ButtonContainer>
         {isOpen && (
           <MobileMenu isOpen={isOpen}>
-            <MobileLink href="#about" onClick={() => setIsOpen(!isOpen)}>About</MobileLink>
-            <MobileLink href='#skills' onClick={() => setIsOpen(!isOpen)}>Skills</MobileLink>
-            <MobileLink href='#experience' onClick={() => setIsOpen(!isOpen)}>Experience</MobileLink>
-            <MobileLink href='#projects' onClick={() => setIsOpen(!isOpen)}>Projects</MobileLink>
-            <MobileLink href='#education' onClick={() => setIsOpen(!isOpen)}>Education</MobileLink>
+            <MobileLink href="#about" smooth style={{ fontWeight: 'bold' }} onClick={() => setIsOpen(!isOpen)}>About</MobileLink>
+            <MobileLink href='#skills' smooth style={{ fontWeight: 'bold' }} onClick={() => setIsOpen(!isOpen)}>Skills</MobileLink>
+            <MobileLink href='#experience' smooth style={{ fontWeight: 'bold' }} onClick={() => setIsOpen(!isOpen)}>Experience</MobileLink>
+            <MobileLink href='#projects' smooth style={{ fontWeight: 'bold' }} onClick={() => setIsOpen(!isOpen)}>Projects</MobileLink>
+            <MobileLink href='#education' smooth style={{ fontWeight: 'bold' }} onClick={() => setIsOpen(!isOpen)}>Education</MobileLink>
             <GitHubButton
               style={{
                 padding: '10px 16px',
                 background: `${theme.primary}`,
                 color: 'white',
                 width: 'max-content',
+                fontWeight: 'bold',
               }}
               href={Bio.github}
               target="_blank"

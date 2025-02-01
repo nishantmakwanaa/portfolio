@@ -1,4 +1,3 @@
-import React from 'react';
 import { Div } from './Home-Animation-Styles';
 const HeroBgAnimation = () => (
   <Div>
