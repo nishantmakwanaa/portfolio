@@ -11,7 +11,7 @@ export const Bio = {
   leetcode: "https://leetcode.com/nishantmakwanaa/",
   linkedin: "https://www.linkedin.com/in/nishantmakwanaa/",
   resume:
-  "https://drive.google.com/file/d/1uCLamKroG7do9mqKP1rsiAfzyjF0SL-U/view",
+    "https://drive.google.com/file/d/1uCLamKroG7do9mqKP1rsiAfzyjF0SL-U/view",
   linktree: "https://linktr.ee/nishantmakwanaa",
   snapchat: "https://www.snapchat.com/add/nishantmakwanaa",
   twitter: "https://twitter.com/nishantmakwanaa",
@@ -187,7 +187,7 @@ export const experiences = [
     ],
     doc: "https://media.licdn.com/dms/image/v2/D4D2DAQGBD_1ghiluMA/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1715363245089?e=1739005200&v=beta&t=gVnBKoAJ3gLGGYXAg3JCbZ_hZgyz5PDj9ekhCp9_LGY",
   },
-  
+
 ];
 
 export const education = [
@@ -241,6 +241,21 @@ export const projects = [
         github: "https://github.com/nishantmakwanaa/",
       },
     ],
+  },
+];
+
+export const achievements = [
+  {
+    id: 1,
+    title: 'Winner - YogaTech Challenge Hackathon 2024',
+    description: 'Won The Prestigious YogaTech Challenge Hackathon In 2024 For Innovative Solutions.',
+    image: 'https://media.licdn.com/dms/image/v2/D4D22AQHPPCoBHRMkfA/feedshare-shrink_800/feedshare-shrink_800/0/1731861736085?e=1741219200&v=beta&t=lLorA8eBrxji1jEDoWrgqvVexKkidujCfVdNisYit08'
+  },
+  {
+    id: 2,
+    title: 'Grand Finalist - Student Start-Up & Innovation Policy Hackathon 2023',
+    description: 'Achieved Grand Finalist Position In The Student Start-Up & Innovation Policy Hackathon 2023.',
+    image: 'https://media.licdn.com/dms/image/v2/D4D22AQHWAxk8Yo3krQ/feedshare-shrink_800/feedshare-shrink_800/0/1709383306869?e=1741219200&v=beta&t=23pRr9m7xS4tlPIrqBAxgVx4ImtFqBMv742OkMk4rx0'
   },
 ];
 

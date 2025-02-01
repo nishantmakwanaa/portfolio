@@ -173,7 +173,7 @@ const Contact = () => {
   };
 
   return (
-    <Container>
+    <Container id="contact">
       <Wrapper>
         <Title>Contact Me</Title>
         <Desc>Feel Free To Reach Out To Me For Any Questions Or Opportunities!</Desc>

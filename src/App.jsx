@@ -11,6 +11,7 @@ import Footer from "./components/Footer/Footer";
 import Experience from "./components/Experience/Experience";
 import Education from "./components/Education/Education";
 import ProjectDetails from "./components/Projects/ProjectDetails";
+import Achievements from "./components/Achievements/Achievements";
 import styled from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -83,6 +84,7 @@ function App() {
           <Projects openModal={openModal} setOpenModal={setOpenModal} />
           <Wrapper>
             <Education />
+            <Achievements />
             <Contact />
           </Wrapper>
           <Footer />
