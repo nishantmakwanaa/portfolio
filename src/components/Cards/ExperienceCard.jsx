@@ -183,4 +183,4 @@ const ExperienceCard = ({ experience }) => {
     )
 }
 
-export default ExperienceCard
+export default ExperienceCard;

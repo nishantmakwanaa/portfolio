@@ -145,4 +145,4 @@ const ProjectCards = ({project,setOpenModal}) => {
     )
 }
 
-export default ProjectCards
+export default ProjectCards;
