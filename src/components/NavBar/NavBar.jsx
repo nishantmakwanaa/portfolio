@@ -46,7 +46,7 @@ const Navbar = () => {
         </NavItems>
         <ButtonContainer>
           <NavLink 
-            to="/contact" 
+            href="#contact" 
             style={{ 
                 padding: '10px 16px', 
                 color: 'white', 
@@ -67,9 +67,9 @@ const Navbar = () => {
             <MobileLink href='#education' smooth style={{ fontWeight: 'bold' }} onClick={() => setIsOpen(!isOpen)}>Education</MobileLink>
             <MobileLink href='#achievements' smooth style={{ fontWeight: 'bold' }} onClick={() => setIsOpen(!isOpen)}>Achievements</MobileLink>
             <NavLink 
-            to="/contact" 
+            href="#contact" 
             style={{ 
-                padding: '10px', 
+                padding: '10px',
                 color: 'white', 
                 fontWeight: 'bold',
                 borderRadius: '6px',
