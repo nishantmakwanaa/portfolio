@@ -32,7 +32,9 @@ const FooterWrapper = styled.footer`
 const Logo = styled.h1`
   font-weight: 600;
   font-size: 20px;
-  color: ${({ theme }) => theme.primary};
+  background: linear-gradient(225deg, hsla(271, 100%, 60%, 1) 0%, hsla(294, 100%, 60%, 1) 100%);
+  -webkit-background-clip: text;
+  color: transparent; /* Makes the text transparent so the gradient is visible */
 `;
 
 const SocialMediaIcons = styled.div`
