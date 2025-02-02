@@ -196,7 +196,7 @@ const index = ({ openModal, setOpenModal }) => {
                         }}
                         onClick={() => setOpenModal({ state: false, project: null })}
                     />
-                    <Image src={project?.image} />
+                    <Image src={project.image && project.image.trim() !== "" ? project.image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfMokvtNhNSz-wfXJD0wQ_LYZiEumsb78j9Q&s"} alt="Project Image" />
                     <Title>{project?.title}</Title>
                     <Date>{project.date}</Date>
                     <Tags>

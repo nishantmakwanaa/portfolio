@@ -1,6 +1,5 @@
-import React from 'react'
 import styled from 'styled-components'
-
+import PropTypes from 'prop-types';
 
 const Button = styled.button`
     display: none;
@@ -125,10 +124,10 @@ const Avatar = styled.img`
 const ProjectCards = ({project,setOpenModal}) => {
     return (
         <Card onClick={() => setOpenModal({state: true, project: project})}>
-            <Image src={project.image}/>
+            <Image src={project.image && project.image.trim() !== "" ? project.image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfMokvtNhNSz-wfXJD0wQ_LYZiEumsb78j9Q&s"} alt="Project Image" />
             <Tags>
                 {project.tags?.map((tag, index) => (
-                <Tag>{tag}</Tag>
+                <Tag key={index}>{tag}</Tag>
                 ))}
             </Tags>
             <Details>
@@ -137,12 +136,25 @@ const ProjectCards = ({project,setOpenModal}) => {
                 <Description>{project.description}</Description>
             </Details>
             <Members>
-                {project.member?.map((member) => (
-                    <Avatar src={member.img}/>
+                {project.member?.map((member, index) => (
+                    <Avatar key={index} src={member.img}/>
                 ))}
             </Members>
         </Card>
     )
 }
+ProjectCards.propTypes = {
+    project: PropTypes.shape({
+        image: PropTypes.string,
+        tags: PropTypes.arrayOf(PropTypes.string),
+        title: PropTypes.string,
+        date: PropTypes.string,
+        description: PropTypes.string,
+        member: PropTypes.arrayOf(PropTypes.shape({
+            img: PropTypes.string
+        }))
+    }).isRequired,
+    setOpenModal: PropTypes.func.isRequired
+};
 
 export default ProjectCards;

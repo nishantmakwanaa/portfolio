@@ -1,3 +1,4 @@
+import React, { useRef } from 'react';
 import { projects } from '../../data/Data';
 import ProjectCard from '../Cards/ProjectCards';
 import styled from 'styled-components';
@@ -12,7 +13,7 @@ const Container = styled.div`
     position: relative;
     z-index: 1;
     align-items: center;
-    clip-path: polygon(0 0, 100% 0, 100% 100%,100% 98%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 98%, 0 100%);
 `;
 
 const Wrapper = styled.div`
@@ -23,7 +24,7 @@ const Wrapper = styled.div`
     flex-direction: column;
     width: 100%;
     max-width: 1350px;
-    padding: 10px 0px 100px 0;
+    padding: 10px 0 100px 0;
     gap: 12px;
     @media (max-width: 960px) {
         flex-direction: column;
@@ -60,10 +61,8 @@ const ToggleButtonGroup = styled.div`
     font-size: 16px;
     border-radius: 12px;
     font-weight: 500;
-    margin: 22px 0px;
-    @media (max-width: 768px) {
-        font-size: 12px;
-    }
+    margin: 22px 0;
+    align-items: center;
 `;
 
 const ToggleButton = styled.div`
@@ -72,8 +71,8 @@ const ToggleButton = styled.div`
     cursor: pointer;
     ${({ active, theme }) =>
         active && `
-    background: ${theme.primary + 20};
-    `}
+            background: ${theme.primary + 20};
+        `}
     &:hover {
         background: ${({ theme }) => theme.primary + 8};
     }
@@ -86,6 +85,8 @@ const ToggleButton = styled.div`
 const Divider = styled.div`
     width: 1.5px;
     background: ${({ theme }) => theme.primary};
+    height: 24px;
+    margin: 0 8px;
 `;
 
 const CardContainer = styled.div`
@@ -96,49 +97,81 @@ const CardContainer = styled.div`
     flex-wrap: wrap;
 `;
 
+const Button = styled.button`
+    margin: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: ${({ theme }) => theme.primary};
+    color: white;
+    border: none;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: ${({ theme }) => theme.primary + 8};
+    }
+`;
+
 const Projects = ({ openModal, setOpenModal }) => {
     const [toggle, setToggle] = useState('all');
+    const [showAll, setShowAll] = useState(false);
+    const containerRef = useRef(null);
+
+    const sortedProjects = [...projects].sort((a, b) => {
+        const titleA = a.title || "";
+        const titleB = b.title || "";
+        return titleA.localeCompare(titleB);
+    });
+
+    const filteredProjects = sortedProjects.filter((project) => toggle === 'all' || project.category === toggle);
+    const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 3);
+
+    const handleShowLess = () => {
+        setShowAll(false);
+        containerRef.current.scrollIntoView({ behavior: 'smooth' });
+    };
 
     return (
-        <Container id="projects">
+        <Container id="projects" ref={containerRef}>
             <Wrapper>
                 <Title>Projects</Title>
                 <Desc>
                     I Have Worked On A Wide Range Of Projects. From Web Apps To Mobile Apps. Here Are Some Of My Projects.
                 </Desc>
                 <ToggleButtonGroup>
-                    {toggle === 'all' ? (
-                        <ToggleButton active value="all" onClick={() => setToggle('all')}>All</ToggleButton>
-                    ) : (
-                        <ToggleButton value="all" onClick={() => setToggle('all')}>All</ToggleButton>
-                    )}
-                    <Divider />
-                    {toggle === 'web app' ? (
-                        <ToggleButton active value="web app" onClick={() => setToggle('web app')}>Web-Applications</ToggleButton>
-                    ) : (
-                        <ToggleButton value="web app" onClick={() => setToggle('web app')}>Web-Applications</ToggleButton>
-                    )}
-                    <Divider />
-                    {toggle === 'android app' ? (
-                        <ToggleButton active value="android app" onClick={() => setToggle('android app')}>Mobile Applications</ToggleButton>
-                    ) : (
-                        <ToggleButton value="android app" onClick={() => setToggle('android app')}>Mobile Applications</ToggleButton>
-                    )}
+                    {['all', 'Web Apps', 'Mobile Apps', 'Games'].map((category, index) => (
+                        <React.Fragment key={category}>
+                            <ToggleButton active={toggle === category} onClick={() => {
+                                setToggle(category);
+                                setShowAll(false);
+                            }}>
+                                {category === 'all' ? 'All' : category}
+                            </ToggleButton>
+                            {index < 3 && <Divider />}
+                        </React.Fragment>
+                    ))}
                 </ToggleButtonGroup>
                 <CardContainer>
-                    {toggle === 'all' && projects.map((project) => (
+                    {displayedProjects.map((project) => (
                         <ProjectCard key={project.id} project={project} openModal={openModal} setOpenModal={setOpenModal} />
                     ))}
-                    {projects
-                        .filter((item) => item.category === toggle)
-                        .map((project) => (
-                            <ProjectCard key={project.id} project={project} openModal={openModal} setOpenModal={setOpenModal} />
-                        ))}
                 </CardContainer>
+                <Button onClick={() => {
+                    if (showAll) {
+                        handleShowLess();
+                    } else {
+                        setShowAll(true);
+                    }
+                }}>
+                    {showAll ? 'Show Less' : 'Show More'}
+                </Button>
             </Wrapper>
         </Container>
     );
 };
+
 Projects.propTypes = {
     openModal: PropTypes.func.isRequired,
     setOpenModal: PropTypes.func.isRequired,

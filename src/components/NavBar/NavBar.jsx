@@ -19,18 +19,21 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const theme = useTheme();
 
+  const handleLogoClick = () => {
+    window.open(Bio.github, '_blank');
+  };
+
   return (
     <Nav>
       <NavbarContainer>
-      <NavLogo>
-          <div style={{ display: "flex", alignItems: "center", color: "white", cursor: 'pointer' }}>
-            <a href={Bio.github} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-              <GitHub style={{ fontSize: '3rem', marginRight: '8px' }} />
-            </a>
-            <a href={Bio.github} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-              <NavLink style={{ fontWeight: 'bold' }}>GitHub Profile</NavLink>
-            </a>
-          </div>
+        <NavLogo>
+          <button
+            onClick={handleLogoClick}
+            style={{ display: "flex", alignItems: "center", background: "none", border: "none", color: "white", cursor: "pointer" }}
+          >
+            <GitHub style={{ fontSize: '3rem', marginRight: '8px' }} />
+            <NavLink style={{ fontSize: '1rem', fontWeight: 'bold', color: 'inherit', textDecoration: 'none' }}>GitHub Profile</NavLink>
+          </button>
         </NavLogo>
         <MobileIcon>
           <FaBars onClick={() => setIsOpen(!isOpen)} />
@@ -51,7 +54,8 @@ const Navbar = () => {
               padding: '10px 16px', 
               background: `${theme.primary}`, 
               color: 'white', 
-              fontWeight: 'bold' 
+              fontWeight: 'bold',
+              borderRadius: '6px'
             }}
           >
             Contact Me
@@ -73,7 +77,8 @@ const Navbar = () => {
                 background: `${theme.primary}`, 
                 color: 'white', 
                 width: 'max-content', 
-                fontWeight: 'bold' 
+                fontWeight: 'bold',
+                borderRadius: '6px'
               }}
             >
               Contact Me

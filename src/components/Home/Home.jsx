@@ -1,6 +1,5 @@
 import HeroBgAnimation from './Home-Animation';
 import { HeroContainer, HeroBg, HeroLeftContainer, Img, HeroRightContainer, HeroInnerContainer, TextLoop, Title, Span, SubTitle, ResumeButton } from './Home-Styles';
-import HeroImg from '../../assets/images/profilePicture.jpg'
 import Typewriter from 'typewriter-effect';
 import { Bio } from '../../data/Data';
 
@@ -32,7 +31,7 @@ const HeroSection = () => {
 
                     <HeroRightContainer id="Right">
 
-                        <Img src={HeroImg} alt="hero-image" />
+                        <Img src={Bio.profliePicture} alt="hero-image" />
                     </HeroRightContainer>
                 </HeroInnerContainer>
 

@@ -70,8 +70,6 @@ const TimelineSection = styled.div`
     gap: 12px;
 `;
 
-
-
 const Exoeriecne = () => {
     return (
         <Container id="experience">
