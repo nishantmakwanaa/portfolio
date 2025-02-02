@@ -1,7 +1,6 @@
 import React from 'react';
 import { FaBars } from 'react-icons/fa';
 import { Bio } from '../../data/Data';
-import { useTheme } from 'styled-components';
 import {
   Nav,
   NavbarContainer,
@@ -17,7 +16,6 @@ import { GitHub } from '@mui/icons-material';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const theme = useTheme();
 
   const handleLogoClick = () => {
     window.open(Bio.github, '_blank');
@@ -48,17 +46,16 @@ const Navbar = () => {
         </NavItems>
         <ButtonContainer>
           <NavLink 
-            href='#contact' 
-            smooth 
+            to="/contact" 
             style={{ 
-              padding: '10px 16px', 
-              background: `${theme.primary}`, 
-              color: 'white', 
-              fontWeight: 'bold',
-              borderRadius: '6px'
+                padding: '10px 16px', 
+                color: 'white', 
+                fontWeight: 'bold',
+                borderRadius: '6px',
+                background: 'linear-gradient(225deg, hsla(271, 100%, 50%, 1) 0%, hsla(294, 100%, 50%, 1) 100%)'
             }}
           >
-            Contact Me
+          Contact Me
           </NavLink>
         </ButtonContainer>
         {isOpen && (
@@ -69,20 +66,20 @@ const Navbar = () => {
             <MobileLink href='#projects' smooth style={{ fontWeight: 'bold' }} onClick={() => setIsOpen(!isOpen)}>Projects</MobileLink>
             <MobileLink href='#education' smooth style={{ fontWeight: 'bold' }} onClick={() => setIsOpen(!isOpen)}>Education</MobileLink>
             <MobileLink href='#achievements' smooth style={{ fontWeight: 'bold' }} onClick={() => setIsOpen(!isOpen)}>Achievements</MobileLink>
-            <NavLink
-              href='#contact' 
-              smooth 
-              style={{ 
-                padding: '10px 16px', 
-                background: `${theme.primary}`, 
+            <NavLink 
+            to="/contact" 
+            style={{ 
+                padding: '10px', 
                 color: 'white', 
-                width: 'max-content', 
                 fontWeight: 'bold',
-                borderRadius: '6px'
-              }}
-            >
-              Contact Me
-            </NavLink>
+                borderRadius: '6px',
+                textAlign: 'center',
+                background: 'linear-gradient(225deg, hsla(271, 100%, 50%, 1) 0%, hsla(294, 100%, 50%, 1) 100%)',
+                width: '35%'
+            }}
+          >
+          Contact Me
+          </NavLink>
           </MobileMenu>
         )}
       </NavbarContainer>

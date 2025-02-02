@@ -193,7 +193,6 @@ export const ResumeButton = styled.a`
     filter: brightness(1);
     }    
     
-    
     @media (max-width: 640px) {
         padding: 12px 0;
         font-size: 18px;

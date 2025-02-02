@@ -51,8 +51,6 @@ const Date = styled.div`
     }
 `
 
-
-
 const Desc = styled.div`
     font-size: 16px;
     font-weight: 400;
@@ -161,9 +159,9 @@ const Button = styled.a`
     color: ${({ theme }) => theme.text_primary};
     padding: 12px 16px;
     border-radius: 8px;
-    background-color: ${({ theme }) => theme.primary};
+    background: linear-gradient(225deg, hsla(271, 100%, 60%, 1) 0%, hsla(294, 100%, 60%, 1) 100%);
     ${({ dull, theme }) => dull && `
-        background-color: ${theme.bgLight};
+        background: ${theme.bgLight};
         color: ${theme.text_secondary};
         &:hover {
             background-color: ${({ theme }) => theme.bg + 99};
@@ -173,7 +171,7 @@ const Button = styled.a`
     text-decoration: none;
     transition: all 0.5s ease;
     &:hover {
-        background-color: ${({ theme }) => theme.primary + 99};
+        background: linear-gradient(225deg, hsla(271, 100%, 60%, 1) 0%, hsla(294, 100%, 60%, 1) 100%);
     }
     @media only screen and (max-width: 600px) {
         font-size: 12px;

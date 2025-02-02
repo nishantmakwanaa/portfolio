@@ -102,15 +102,14 @@ const Button = styled.button`
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    background-color: ${({ theme }) => theme.primary};
     color: white;
     border: none;
     font-weight: bold;
     border-radius: 6px;
-    transition: background-color 0.3s;
-
+    transition: background 0.3s;
+    background: linear-gradient(225deg, hsla(271, 100%, 50%, 1) 0%, hsla(294, 100%, 50%, 1) 100%);
     &:hover {
-        background-color: ${({ theme }) => theme.primary + 8};
+        background: linear-gradient(225deg, hsla(271, 100%, 60%, 1) 0%, hsla(294, 100%, 60%, 1) 100%);
     }
 `;
 
@@ -158,7 +157,8 @@ const Projects = ({ openModal, setOpenModal }) => {
                         <ProjectCard key={project.id} project={project} openModal={openModal} setOpenModal={setOpenModal} />
                     ))}
                 </CardContainer>
-                <Button onClick={() => {
+                <Button 
+                onClick={() => {
                     if (showAll) {
                         handleShowLess();
                     } else {
