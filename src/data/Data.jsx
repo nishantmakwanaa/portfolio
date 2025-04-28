@@ -574,4 +574,6 @@ export const TimeLineData = [
   { year: 2023, text: "Been Finalist At State Hackathon." },
   { year: 2024, text: "Contributed In GirlScript Summer Of Code" },
   { year: 2024, text: "Won National Level Tech Hackathon." },
+  { year: 2025, text: "Got SDE Internship At SynerSense." },
+  { year: 2025, text: "Won Milople Hackathon." },
 ];
