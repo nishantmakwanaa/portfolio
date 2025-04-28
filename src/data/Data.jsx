@@ -1,12 +1,12 @@
 export const Bio = {
   name: "Nishant Makwana",
-  profliePicture: "https://media.licdn.com/dms/image/v2/D4D03AQE0hL9Sw7U2oA/profile-displayphoto-shrink_800_800/B4DZRjgWKdGUAc-/0/1736836212640?e=1744243200&v=beta&t=LVyLM80NIv1VVstkJvZJIR0UEAPtRy1_VUbk-aV6wwI",
+  profliePicture: "https://media.licdn.com/dms/image/v2/D4D03AQFtGAzVU41VXg/profile-displayphoto-shrink_800_800/B4DZV65FaWHYAc-/0/1741523540707?e=1751500800&v=beta&t=NT9nCtmf42ufRQwdoJXEdMv-JkkU0u0gaILZT4obLt4",
   roles: [
     "Web Apps",
     "Mobile Apps",
   ],
   description:
-    "My Name Is Nishant Makwana. A Passionate 20-Year-Old Bachelor Of Engineering - Information Technology Student Who Is Proficient In Java, JavaScript And Python. Specialized In Full Stack Web Development ( MERN Stack + Next JS ) & Cross-Native Mobile App Development ( React Native ) With Machine Learning. Also, Been A Winner At YogaTech Start-Up Event 2024 & Finalist At SSIP Hackathon 2023. And A Experienced Java Remote Intern At CodSoft.",
+    "My Name Is Nishant Makwana, Working As Software Engineering Intern @SynerSense. A Passionate 20-Year-Old Bachelor Of Engineering - Information Technology Student Who Is Proficient In Java, JavaScript And Python. Specialized In Full Stack Web Development ( MERN Stack + Next JS ) & Cross-Native Mobile App Development ( React Native ) With Machine Learning. Also, Been A Winner At YogaTech Start-Up Event 2024 & Finalist At SSIP Hackathon 2023. And A Experienced Java Remote Intern At CodSoft.",
   github: "https://github.com/nishantmakwanaa",
   instagram: "https://www.instagram.com/nishantmakwanaa/",
   leetcode: "https://leetcode.com/nishantmakwanaa/",
@@ -156,8 +156,23 @@ export const skills = [
 export const experiences = [
   {
     id: 0,
+    img: "https://media.licdn.com/dms/image/v2/C4D0BAQE4w_csJepZUw/company-logo_100_100/company-logo_100_100/0/1660657940959/synersense_logo?e=1751500800&v=beta&t=77xl2OqTeSLaZmRjx8zOlAfEH9WMYCclrb2vDPSoBi4",
+    role: "Software Engineer Intern",
+    company: "SynerSense",
+    date: "Mar 2025 - Present",
+    desc: "Working On Medical Data Monitoring App Using Flask & React JS.",
+    skills: [
+      "Flask",
+      "MySQL",
+      "React JS",
+      "TailWindCSS",
+    ],
+    doc: "https://media.licdn.com/dms/image/v2/D4D2DAQFT5kP47qP8Zw/profile-treasury-image-shrink_160_160/B4DZV624zoHIAk-/0/1741522964226?e=1746460800&v=beta&t=S2lEd6g7D_nCm8wFeDyoffrOLuzLf_JDtL_VR7xFGiU",
+  },
+  {
+    id: 1,
     img: "data:image/jpeg;base64,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",
-    role: "Contributor",
+    role: "Open-Source Contributor",
     company: "GirlScript Summer Of Code",
     date: "May 2024 - Jun 2024",
     desc: "Contributed To The Open-Source Project Of GirlScript Summer of Code.",
@@ -168,10 +183,10 @@ export const experiences = [
       "Python",
       "React JS",
     ],
-    doc: "https://media.licdn.com/dms/image/v2/D4D2DAQEQ5GiAJwD5kA/profile-treasury-image-shrink_160_160/profile-treasury-image-shrink_160_160/0/1715362951417?e=1739005200&v=beta&t=ICWOLY4-JEKL-R-erdDrWQJccAUE3wCwEa0RZ2kT66o",
+    doc: "https://media.licdn.com/dms/image/v2/D4D2DAQEQ5GiAJwD5kA/profile-treasury-image-shrink_160_160/profile-treasury-image-shrink_160_160/0/1715362951417?e=1746460800&v=beta&t=c6fU7y29xYeIeIeRzh1A_Io1bTEUGs_kk_RaomVm_Hk",
   },
   {
-    id: 1,
+    id: 2,
     img: "data:image/jpeg;base64,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",
     role: "Java Developer Intern",
     company: "CodSoft",
@@ -185,9 +200,8 @@ export const experiences = [
       "MySQL",
       "Spring Boot",
     ],
-    doc: "https://media.licdn.com/dms/image/v2/D4D2DAQGBD_1ghiluMA/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1715363245089?e=1739005200&v=beta&t=gVnBKoAJ3gLGGYXAg3JCbZ_hZgyz5PDj9ekhCp9_LGY",
+    doc: "https://media.licdn.com/dms/image/v2/D4D2DAQFfY-9hk3nWCQ/profile-treasury-document-cover-images_480/B4DZV62s7RHwAw-/0/1741522917693?e=1746460800&v=beta&t=AoLj1ftlUaWN59C8h43tT5Iq0RZtRyV45hM2r-3JA5c",
   },
-
 ];
 
 export const education = [
@@ -234,7 +248,7 @@ export const projects = [
     member: [
       {
         name: "Nishant Makwana",
-        img: "https://img.freepik.com/free-psd/3d-icon-social-media-app_23-2150049583.jpg",
+        img: "https://media.licdn.com/dms/image/v2/D4D03AQFtGAzVU41VXg/profile-displayphoto-shrink_200_200/B4DZV65FaWHYAY-/0/1741523540736?e=1751500800&v=beta&t=DE20ck3m0fHsbhjvf2QCQtZRcj_GDb2iHnmZ1w1AlAc",
         linkedin: "https://www.linkedin.com/in/nishantmakwana",
         github: "https://github.com/nishantmakwanaa"
       }
@@ -253,7 +267,7 @@ export const projects = [
     member: [
       {
         name: "Nishant Makwana",
-        img: "https://media.licdn.com/dms/image/v2/D4D03AQE0hL9Sw7U2oA/profile-displayphoto-shrink_200_200/B4DZRjgWKdGUAY-/0/1736836212619?e=1744243200&v=beta&t=2qKBb_MhbTNMj997wru9mKC9owE0FXrhyirh1dpKN1w",
+        img: "https://media.licdn.com/dms/image/v2/D4D03AQFtGAzVU41VXg/profile-displayphoto-shrink_200_200/B4DZV65FaWHYAY-/0/1741523540736?e=1751500800&v=beta&t=DE20ck3m0fHsbhjvf2QCQtZRcj_GDb2iHnmZ1w1AlAc",
         linkedin: "https://www.linkedin.com/in/nishantmakwana",
         github: "https://github.com/nishantmakwanaa"
       }
@@ -272,7 +286,7 @@ export const projects = [
     member: [
       {
         name: "Nishant Makwana",
-        img: "https://media.licdn.com/dms/image/v2/D4D03AQE0hL9Sw7U2oA/profile-displayphoto-shrink_200_200/B4DZRjgWKdGUAY-/0/1736836212619?e=1744243200&v=beta&t=2qKBb_MhbTNMj997wru9mKC9owE0FXrhyirh1dpKN1w",
+        img: "https://media.licdn.com/dms/image/v2/D4D03AQFtGAzVU41VXg/profile-displayphoto-shrink_200_200/B4DZV65FaWHYAY-/0/1741523540736?e=1751500800&v=beta&t=DE20ck3m0fHsbhjvf2QCQtZRcj_GDb2iHnmZ1w1AlAc",
         linkedin: "https://www.linkedin.com/in/nishantmakwana",
         github: "https://github.com/nishantmakwanaa"
       }
@@ -291,7 +305,7 @@ export const projects = [
     member: [
       {
         name: "Nishant Makwana",
-        img: "https://media.licdn.com/dms/image/v2/D4D03AQE0hL9Sw7U2oA/profile-displayphoto-shrink_200_200/B4DZRjgWKdGUAY-/0/1736836212619?e=1744243200&v=beta&t=2qKBb_MhbTNMj997wru9mKC9owE0FXrhyirh1dpKN1w",
+        img: "https://media.licdn.com/dms/image/v2/D4D03AQFtGAzVU41VXg/profile-displayphoto-shrink_200_200/B4DZV65FaWHYAY-/0/1741523540736?e=1751500800&v=beta&t=DE20ck3m0fHsbhjvf2QCQtZRcj_GDb2iHnmZ1w1AlAc",
         linkedin: "https://www.linkedin.com/in/nishantmakwana",
         github: "https://github.com/nishantmakwanaa"
       }
@@ -310,7 +324,7 @@ export const projects = [
     member: [
       {
         name: "Nishant Makwana",
-        img: "https://media.licdn.com/dms/image/v2/D4D03AQE0hL9Sw7U2oA/profile-displayphoto-shrink_200_200/B4DZRjgWKdGUAY-/0/1736836212619?e=1744243200&v=beta&t=2qKBb_MhbTNMj997wru9mKC9owE0FXrhyirh1dpKN1w",
+        img: "https://media.licdn.com/dms/image/v2/D4D03AQFtGAzVU41VXg/profile-displayphoto-shrink_200_200/B4DZV65FaWHYAY-/0/1741523540736?e=1751500800&v=beta&t=DE20ck3m0fHsbhjvf2QCQtZRcj_GDb2iHnmZ1w1AlAc",
         linkedin: "https://www.linkedin.com/in/nishantmakwana",
         github: "https://github.com/nishantmakwanaa"
       }
@@ -329,7 +343,7 @@ export const projects = [
     member: [
       {
         name: "Nishant Makwana",
-        img: "https://media.licdn.com/dms/image/v2/D4D03AQE0hL9Sw7U2oA/profile-displayphoto-shrink_200_200/B4DZRjgWKdGUAY-/0/1736836212619?e=1744243200&v=beta&t=2qKBb_MhbTNMj997wru9mKC9owE0FXrhyirh1dpKN1w",
+        img: "https://media.licdn.com/dms/image/v2/D4D03AQFtGAzVU41VXg/profile-displayphoto-shrink_200_200/B4DZV65FaWHYAY-/0/1741523540736?e=1751500800&v=beta&t=DE20ck3m0fHsbhjvf2QCQtZRcj_GDb2iHnmZ1w1AlAc",
         linkedin: "https://www.linkedin.com/in/nishantmakwana",
         github: "https://github.com/nishantmakwanaa"
       }
@@ -348,7 +362,7 @@ export const projects = [
     member: [
       {
         name: "Nishant Makwana",
-        img: "https://media.licdn.com/dms/image/v2/D4D03AQE0hL9Sw7U2oA/profile-displayphoto-shrink_200_200/B4DZRjgWKdGUAY-/0/1736836212619?e=1744243200&v=beta&t=2qKBb_MhbTNMj997wru9mKC9owE0FXrhyirh1dpKN1w",
+        img: "https://media.licdn.com/dms/image/v2/D4D03AQFtGAzVU41VXg/profile-displayphoto-shrink_200_200/B4DZV65FaWHYAY-/0/1741523540736?e=1751500800&v=beta&t=DE20ck3m0fHsbhjvf2QCQtZRcj_GDb2iHnmZ1w1AlAc",
         linkedin: "https://www.linkedin.com/in/nishantmakwana",
         github: "https://github.com/nishantmakwanaa"
       }
@@ -367,7 +381,7 @@ export const projects = [
     member: [
       {
         name: "Nishant Makwana",
-        img: "https://media.licdn.com/dms/image/v2/D4D03AQE0hL9Sw7U2oA/profile-displayphoto-shrink_200_200/B4DZRjgWKdGUAY-/0/1736836212619?e=1744243200&v=beta&t=2qKBb_MhbTNMj997wru9mKC9owE0FXrhyirh1dpKN1w",
+        img: "https://media.licdn.com/dms/image/v2/D4D03AQFtGAzVU41VXg/profile-displayphoto-shrink_200_200/B4DZV65FaWHYAY-/0/1741523540736?e=1751500800&v=beta&t=DE20ck3m0fHsbhjvf2QCQtZRcj_GDb2iHnmZ1w1AlAc",
         linkedin: "https://www.linkedin.com/in/nishantmakwana",
         github: "https://github.com/nishantmakwanaa"
       }
@@ -386,7 +400,7 @@ export const projects = [
     member: [
       {
         name: "Nishant Makwana",
-        img: "https://media.licdn.com/dms/image/v2/D4D03AQE0hL9Sw7U2oA/profile-displayphoto-shrink_200_200/B4DZRjgWKdGUAY-/0/1736836212619?e=1744243200&v=beta&t=2qKBb_MhbTNMj997wru9mKC9owE0FXrhyirh1dpKN1w",
+        img: "https://media.licdn.com/dms/image/v2/D4D03AQFtGAzVU41VXg/profile-displayphoto-shrink_200_200/B4DZV65FaWHYAY-/0/1741523540736?e=1751500800&v=beta&t=DE20ck3m0fHsbhjvf2QCQtZRcj_GDb2iHnmZ1w1AlAc",
         linkedin: "https://www.linkedin.com/in/nishantmakwana",
         github: "https://github.com/nishantmakwanaa"
       }
@@ -405,7 +419,7 @@ export const projects = [
     member: [
       {
         name: "Nishant Makwana",
-        img: "https://media.licdn.com/dms/image/v2/D4D03AQE0hL9Sw7U2oA/profile-displayphoto-shrink_200_200/B4DZRjgWKdGUAY-/0/1736836212619?e=1744243200&v=beta&t=2qKBb_MhbTNMj997wru9mKC9owE0FXrhyirh1dpKN1w",
+        img: "https://media.licdn.com/dms/image/v2/D4D03AQFtGAzVU41VXg/profile-displayphoto-shrink_200_200/B4DZV65FaWHYAY-/0/1741523540736?e=1751500800&v=beta&t=DE20ck3m0fHsbhjvf2QCQtZRcj_GDb2iHnmZ1w1AlAc",
         linkedin: "https://www.linkedin.com/in/nishantmakwana",
         github: "https://github.com/nishantmakwanaa"
       }
@@ -424,7 +438,7 @@ export const projects = [
     member: [
       {
         name: "Nishant Makwana",
-        img: "https://media.licdn.com/dms/image/v2/D4D03AQE0hL9Sw7U2oA/profile-displayphoto-shrink_200_200/B4DZRjgWKdGUAY-/0/1736836212619?e=1744243200&v=beta&t=2qKBb_MhbTNMj997wru9mKC9owE0FXrhyirh1dpKN1w",
+        img: "https://media.licdn.com/dms/image/v2/D4D03AQFtGAzVU41VXg/profile-displayphoto-shrink_200_200/B4DZV65FaWHYAY-/0/1741523540736?e=1751500800&v=beta&t=DE20ck3m0fHsbhjvf2QCQtZRcj_GDb2iHnmZ1w1AlAc",
         linkedin: "https://www.linkedin.com/in/nishantmakwana",
         github: "https://github.com/nishantmakwanaa"
       }
@@ -443,7 +457,7 @@ export const projects = [
     member: [
       {
         name: "Nishant Makwana",
-        img: "https://media.licdn.com/dms/image/v2/D4D03AQE0hL9Sw7U2oA/profile-displayphoto-shrink_200_200/B4DZRjgWKdGUAY-/0/1736836212619?e=1744243200&v=beta&t=2qKBb_MhbTNMj997wru9mKC9owE0FXrhyirh1dpKN1w",
+        img: "https://media.licdn.com/dms/image/v2/D4D03AQFtGAzVU41VXg/profile-displayphoto-shrink_200_200/B4DZV65FaWHYAY-/0/1741523540736?e=1751500800&v=beta&t=DE20ck3m0fHsbhjvf2QCQtZRcj_GDb2iHnmZ1w1AlAc",
         linkedin: "https://www.linkedin.com/in/nishantmakwana",
         github: "https://github.com/nishantmakwanaa"
       }
@@ -462,7 +476,7 @@ export const projects = [
     member: [
       {
         name: "Nishant Makwana",
-        img: "https://media.licdn.com/dms/image/v2/D4D03AQE0hL9Sw7U2oA/profile-displayphoto-shrink_200_200/B4DZRjgWKdGUAY-/0/1736836212619?e=1744243200&v=beta&t=2qKBb_MhbTNMj997wru9mKC9owE0FXrhyirh1dpKN1w",
+        img: "https://media.licdn.com/dms/image/v2/D4D03AQFtGAzVU41VXg/profile-displayphoto-shrink_200_200/B4DZV65FaWHYAY-/0/1741523540736?e=1751500800&v=beta&t=DE20ck3m0fHsbhjvf2QCQtZRcj_GDb2iHnmZ1w1AlAc",
         linkedin: "https://www.linkedin.com/in/nishantmakwana",
         github: "https://github.com/nishantmakwanaa"
       }
@@ -481,7 +495,7 @@ export const projects = [
     member: [
       {
         name: "Nishant Makwana",
-        img: "https://media.licdn.com/dms/image/v2/D4D03AQE0hL9Sw7U2oA/profile-displayphoto-shrink_200_200/B4DZRjgWKdGUAY-/0/1736836212619?e=1744243200&v=beta&t=2qKBb_MhbTNMj997wru9mKC9owE0FXrhyirh1dpKN1w",
+        img: "https://media.licdn.com/dms/image/v2/D4D03AQFtGAzVU41VXg/profile-displayphoto-shrink_200_200/B4DZV65FaWHYAY-/0/1741523540736?e=1751500800&v=beta&t=DE20ck3m0fHsbhjvf2QCQtZRcj_GDb2iHnmZ1w1AlAc",
         linkedin: "https://www.linkedin.com/in/nishantmakwana",
         github: "https://github.com/nishantmakwanaa"
       }
@@ -500,7 +514,7 @@ export const projects = [
     member: [
       {
         name: "Nishant Makwana",
-        img: "https://media.licdn.com/dms/image/v2/D4D03AQE0hL9Sw7U2oA/profile-displayphoto-shrink_200_200/B4DZRjgWKdGUAY-/0/1736836212619?e=1744243200&v=beta&t=2qKBb_MhbTNMj997wru9mKC9owE0FXrhyirh1dpKN1w",
+        img: "https://media.licdn.com/dms/image/v2/D4D03AQFtGAzVU41VXg/profile-displayphoto-shrink_200_200/B4DZV65FaWHYAY-/0/1741523540736?e=1751500800&v=beta&t=DE20ck3m0fHsbhjvf2QCQtZRcj_GDb2iHnmZ1w1AlAc",
         linkedin: "https://www.linkedin.com/in/nishantmakwana",
         github: "https://github.com/nishantmakwanaa"
       }
@@ -519,7 +533,7 @@ export const projects = [
     member: [
       {
         name: "Nishant Makwana",
-        img: "https://media.licdn.com/dms/image/v2/D4D03AQE0hL9Sw7U2oA/profile-displayphoto-shrink_200_200/B4DZRjgWKdGUAY-/0/1736836212619?e=1744243200&v=beta&t=2qKBb_MhbTNMj997wru9mKC9owE0FXrhyirh1dpKN1w",
+        img: "https://media.licdn.com/dms/image/v2/D4D03AQFtGAzVU41VXg/profile-displayphoto-shrink_200_200/B4DZV65FaWHYAY-/0/1741523540736?e=1751500800&v=beta&t=DE20ck3m0fHsbhjvf2QCQtZRcj_GDb2iHnmZ1w1AlAc",
         linkedin: "https://www.linkedin.com/in/nishantmakwana",
         github: "https://github.com/nishantmakwanaa"
       }
@@ -530,21 +544,27 @@ export const projects = [
 export const achievements = [
   {
     id: 0,
-    title: 'Best Project - TechManjari 2025',
-    description: 'We Got Recorganized In News During TechManjari 2025 For Our E-Waste Recycling Project.',
-    image: 'https://media.licdn.com/dms/image/v2/D4D22AQFSL_F36IAcbw/feedshare-shrink_800/B4DZRfdDOuHUAg-/0/1736768250773?e=1741219200&v=beta&t=UNtSMW4tt5abi_MJOG04H2M8GbxcP2Rsvnu9ZS5dl5s'
+    title: 'Winner - Milople Hackathon 2025',
+    description: 'Won Milople Hackathon In 2025 For Innovative AI Code Editor.',
+    image: 'https://media.licdn.com/dms/image/v2/D4D22AQFRy1IeI1nipw/feedshare-shrink_800/B4DZWLiqL6G4Ag-/0/1741802884633?e=1748476800&v=beta&t=4Y3J8YA_acNXFzSbnnablUvw0mmyxey6DY_zBCoW3Mo'
   },
   {
     id: 1,
-    title: 'Winner - YogaTech Challenge Hackathon 2024',
-    description: 'Won The Prestigious YogaTech Challenge Hackathon In 2024 For Innovative Solutions.',
-    image: 'https://media.licdn.com/dms/image/v2/D4D22AQHPPCoBHRMkfA/feedshare-shrink_800/feedshare-shrink_800/0/1731861736085?e=1741219200&v=beta&t=lLorA8eBrxji1jEDoWrgqvVexKkidujCfVdNisYit08'
+    title: 'Best Project - TechManjari 2025',
+    description: 'We Got Recorganized In News During TechManjari 2025 For Our E-Waste Recycling Project.',
+    image: 'https://media.licdn.com/dms/image/v2/D4D22AQFSL_F36IAcbw/feedshare-shrink_800/B4DZRfdDOuHUAg-/0/1736768250773?e=1748476800&v=beta&t=v76wkY6NPhYO1pESM6SMvzzAVXNh56to8cXaFiO7-F4'
   },
   {
     id: 2,
+    title: 'Winner - YogaTech Challenge Hackathon 2024',
+    description: 'Won The Prestigious YogaTech Challenge Hackathon In 2024 For Innovative Solutions.',
+    image: 'https://media.licdn.com/dms/image/v2/D4D22AQHPPCoBHRMkfA/feedshare-shrink_800/feedshare-shrink_800/0/1731861736085?e=1748476800&v=beta&t=A6DV9FMfWABQ92TQ7fA61CiJzVsd6l8Di9ShFUJ1NC8'
+  },
+  {
+    id: 3,
     title: 'Grand Finalist - Student Start-Up & Innovation Policy Hackathon 2023',
     description: 'Achieved Grand Finalist Position In The Student Start-Up & Innovation Policy Hackathon 2023.',
-    image: 'https://media.licdn.com/dms/image/v2/D4D22AQHWAxk8Yo3krQ/feedshare-shrink_800/feedshare-shrink_800/0/1709383306869?e=1741219200&v=beta&t=23pRr9m7xS4tlPIrqBAxgVx4ImtFqBMv742OkMk4rx0'
+    image: 'https://media.licdn.com/dms/image/v2/D4D22AQHWAxk8Yo3krQ/feedshare-shrink_800/feedshare-shrink_800/0/1709383306869?e=1748476800&v=beta&t=ntM90cjXpmtmi-DYNCXj16n4xg4IdCEhBcu2HBm4wz8'
   },
 ];
 
