@@ -212,7 +212,7 @@ export const education = [
     date: "July 2022 - Present",
     grade: "7.5 CGPA (Till 5Th Semester)",
     desc: "I'm Currently Pursuing A Bachelor's Degree In Information Technology At GyanManjari Institute Of Technology, Bhavnagar, Gujarat. I Have Completed 5 Semesters And Have A CGPA Of 7.5. I Have Taken Courses In Data Structures, Algorithms, Object-Oriented Programming, DataBase Management Systems, Operating Systems, And Computer Networks, Among others. I Am Also A Member Of IT CELL At Our College With The Part Of Google Developer'S Student Club (GDSC), Where I'm Learning And Working On Exciting Projects With A Team Of Talented Developers.",
-    degree: "Bachelor of Technology - BTech, Information Technology",
+    degree: "Bachelor Of Engineering - B. E, Information Technology",
   },
   {
     id: 1,
