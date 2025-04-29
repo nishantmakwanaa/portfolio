@@ -6,7 +6,7 @@ export const Bio = {
     "Mobile Apps",
   ],
   description:
-    "My Name Is Nishant Makwana, Working As Software Engineering Intern @SynerSense. A Passionate 20-Year-Old Bachelor Of Engineering - Information Technology Student Who Is Proficient In Java, JavaScript And Python. Specialized In Full Stack Web Development ( MERN Stack + Next JS ) & Cross-Native Mobile App Development ( React Native ) With Machine Learning. Also, Been A Winner At Milople Hackathon'25 & YogaTech Start-Up Event 2024. Also, Been Finalist At SSIP Hackathon 2023. And A Experienced Java Remote Intern At CodSoft.",
+    ""My Name Is Nishant Makwana, Working As A Software Engineering Intern @SynerSense. A Passionate 20-Year-Old Bachelor Of Engineering - Information Technology Student Who Is Proficient In Java, JavaScript, And Python. Specialized In Full Stack Web Development (MERN Stack + Next JS) & Cross-Native Mobile App Development (React Native) With Machine Learning. Also, Been A Winner At Milople Hackathon'25 & YogaTech Start-Up Event 2024. Also, Been A Finalist At SSIP Hackathon 2023. And An Experienced Java Remote Intern At CodSoft.",
   github: "https://github.com/nishantmakwanaa",
   instagram: "https://www.instagram.com/nishantmakwanaa/",
   leetcode: "https://leetcode.com/nishantmakwanaa/",
