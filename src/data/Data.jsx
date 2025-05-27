@@ -12,7 +12,7 @@ export const Bio = {
   leetcode: "https://leetcode.com/nishantmakwanaa/",
   linkedin: "https://www.linkedin.com/in/nishantmakwanaa/",
   resume:
-    "https://drive.google.com/file/d/1hpu2VORi4aQzcTPEox5kN-hn3Zv5VjtU/view?usp=drive_link",
+    "https://drive.google.com/file/d/1XEY0ViM54i-2PUy0g15p-URYjLbM4Qzd/view?usp=sharing",
   linktree: "https://linktr.ee/nishantmakwanaa",
   snapchat: "https://www.snapchat.com/add/nishantmakwanaa",
   twitter: "https://twitter.com/nishantmakwanaa",
