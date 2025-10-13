@@ -380,6 +380,97 @@ main {
 
 .social-item .social-link:hover { color: var(--light-gray); }
 
+/* Mobile: show 7 social icons per row and wrap remaining items */
+@media (max-width: 579px) {
+  .social-list {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    padding-left: 0;
+    padding-bottom: 6px;
+  }
+
+  .social-item {
+    width: auto;
+    justify-self: center;
+  }
+
+  .social-item .social-link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+/* Toast / notification for EmailJS feedback */
+.toast-container {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 60;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  min-width: 260px;
+  max-width: 90vw;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 12px;
+  color: var(--white-2);
+  box-shadow: var(--shadow-4);
+  font-size: var(--fs-7);
+  background: linear-gradient(135deg, rgba(45,45,45,0.95), rgba(30,30,30,0.95));
+  border: 1px solid rgba(255,255,255,0.04);
+  transform-origin: bottom center;
+  animation: toastIn 0.24s ease;
+}
+
+.toast--success {
+  background: linear-gradient(90deg, rgba(71,163,69,0.12), rgba(71,163,69,0.07)), var(--eerie-black-2);
+  border-left: 4px solid var(--orange-yellow-crayola);
+}
+
+.toast--error {
+  background: linear-gradient(90deg, rgba(192,57,43,0.08), rgba(192,57,43,0.04)), var(--eerie-black-2);
+  border-left: 4px solid hsl(0, 70%, 50%);
+}
+
+.toast__icon {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.03);
+  font-size: 16px;
+}
+
+.toast__message { flex: 1; }
+
+.toast__close {
+  margin-left: 8px;
+  background: none;
+  border: none;
+  color: var(--light-gray);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+@keyframes toastIn {
+  from { transform: translateY(10px) scale(0.98); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
 .navbar {
   position: fixed;
   bottom: 0;

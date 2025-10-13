@@ -132,7 +132,10 @@ for (let i = 0; i < navigationLinks.length; i++) {
 }
 
 if (window.emailjs && form) {
-  emailjs.init({ publicKey: "09pQjJGPRL1Lqrz_C" });
+
+  emailjs.init("09pQjJGPRL1Lqrz_C");
+
+  console.log("EmailJS initialized:", !!window.emailjs);
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -146,16 +149,63 @@ if (window.emailjs && form) {
 
     formBtn.setAttribute("disabled", "");
 
-    emailjs
-      .send("nishantmakwana", "template_qfvbqle", templateParams)
-      .then(function () {
+      console.log("EmailJS payload:", {
+        service_id: "nishantmakwanaa",
+        template_id: "template_qfvbqle",
+        public_key: "09pQjJGPRL1Lqrz_C",
+        templateParams,
+      });
+
+      emailjs
+        .send("nishantmakwanaa", "template_qfvbqle", templateParams, "09pQjJGPRL1Lqrz_C")
+      .then(function (response) {
+        console.log("EmailJS send success:", response);
         form.reset();
-        formBtn.setAttribute("disabled", "");
-        alert("Message sent Successfully !");
+        showToast('Message sent Successfully !', 'success');
       })
-      .catch(function () {
+      .catch(function (err) {
+        console.error("EmailJS send error:", err);
         formBtn.removeAttribute("disabled");
-        alert("Failed To Send Message. Please Try Again...");
+
+        const detail = err && err.text ? "\n" + err.text : "";
+        showToast("Failed To Send Message. Please Try Again..." + detail, 'error');
       });
   });
+}
+
+function showToast(message, type = 'success', timeout = 6000) {
+  if (!message) return;
+  let container = document.querySelector('.toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.className = 'toast-container';
+    document.body.appendChild(container);
+  }
+
+  const toast = document.createElement('div');
+  toast.className = 'toast ' + (type === 'error' ? 'toast--error' : 'toast--success');
+
+  const icon = document.createElement('div');
+  icon.className = 'toast__icon';
+  icon.innerHTML = type === 'error' ? '✖' : '✔';
+
+  const msg = document.createElement('div');
+  msg.className = 'toast__message';
+  msg.textContent = message;
+
+  const close = document.createElement('button');
+  close.className = 'toast__close';
+  close.setAttribute('aria-label', 'Close notification');
+  close.innerHTML = '×';
+  close.addEventListener('click', function () { container.removeChild(toast); });
+
+  toast.appendChild(icon);
+  toast.appendChild(msg);
+  toast.appendChild(close);
+
+  container.appendChild(toast);
+
+  setTimeout(function () {
+    try { if (container.contains(toast)) container.removeChild(toast); } catch (e) { /* ignore */ }
+  }, timeout);
 }
