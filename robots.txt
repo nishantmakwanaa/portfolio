@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nishantmakwanaa.github.io/sitemap.xml
