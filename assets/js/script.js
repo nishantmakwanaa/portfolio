@@ -210,28 +210,28 @@ function showToast(message, type = 'success', timeout = 6000) {
   }, timeout);
 }
 
-// Initialize new features when DOM is ready
 function initializeNewFeatures() {
   console.log('Initializing new features...');
   
-  // Make timeline items with data-link clickable (open in new tab)
-  document.querySelectorAll('.timeline-item[data-link]').forEach(function (item) {
-    item.style.cursor = 'pointer';
-    item.addEventListener('click', function () {
-      const url = item.getAttribute('data-link');
-      if (url) window.open(url, '_blank', 'noopener');
+  setTimeout(() => {
+    document.querySelectorAll('.timeline-item[data-link]').forEach(function (item) {
+      item.style.cursor = 'pointer';
+      item.addEventListener('click', function () {
+        const url = item.getAttribute('data-link');
+        if (url) window.open(url, '_blank', 'noopener');
+      });
     });
-  });
-  console.log('Timeline items initialized:', document.querySelectorAll('.timeline-item[data-link]').length);
+    console.log('Timeline items initialized:', document.querySelectorAll('.timeline-item[data-link]').length);
+  }, 100);
 
-  // Project quick links modal
-  (function () {
-    const projectItems = document.querySelectorAll('.project-item[data-live-url]');
-    const modal = document.querySelector('[data-project-modal]');
-    const overlay = document.querySelector('[data-project-overlay]');
-    const closeBtn = document.querySelector('[data-project-close-btn]');
-    const liveLink = document.querySelector('[data-live-link]');
-    const githubLink = document.querySelector('[data-github-link]');
+  setTimeout(() => {
+    (function () {
+      const projectItems = document.querySelectorAll('.project-item[data-live-url]');
+      const modal = document.querySelector('[data-project-modal]');
+      const overlay = document.querySelector('[data-project-overlay]');
+      const closeBtn = document.querySelector('[data-project-close-btn]');
+      const liveLink = document.querySelector('[data-live-link]');
+      const githubLink = document.querySelector('[data-github-link]');
 
     console.log('Project modal elements:', { 
       projectItems: projectItems.length, 
@@ -279,10 +279,11 @@ function initializeNewFeatures() {
         toggleProjectModal();
       });
     }
-  })();
+    })();
+  }, 200);
 
-  // Blog read modal: open popup with content
-  (function () {
+  setTimeout(() => {
+    (function () {
     const blogCards = document.querySelectorAll('.blog-post-item a[data-blog-open]');
     const modal = document.querySelector('[data-blog-modal]');
     const overlay = document.querySelector('[data-blog-overlay]');
@@ -352,10 +353,10 @@ function initializeNewFeatures() {
         toggleBlogModal();
       });
     }
-  })();
+    })();
+  }, 300);
 }
 
-// Call the function when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initializeNewFeatures);
 } else {
