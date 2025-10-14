@@ -210,9 +210,11 @@ function showToast(message, type = 'success', timeout = 6000) {
   }, timeout);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+// Initialize new features when DOM is ready
+function initializeNewFeatures() {
   console.log('Initializing new features...');
   
+  // Make timeline items with data-link clickable (open in new tab)
   document.querySelectorAll('.timeline-item[data-link]').forEach(function (item) {
     item.style.cursor = 'pointer';
     item.addEventListener('click', function () {
@@ -222,6 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   console.log('Timeline items initialized:', document.querySelectorAll('.timeline-item[data-link]').length);
 
+  // Project quick links modal
   (function () {
     const projectItems = document.querySelectorAll('.project-item[data-live-url]');
     const modal = document.querySelector('[data-project-modal]');
@@ -230,31 +233,55 @@ document.addEventListener('DOMContentLoaded', function() {
     const liveLink = document.querySelector('[data-live-link]');
     const githubLink = document.querySelector('[data-github-link]');
 
-    console.log('Project modal elements:', { projectItems: projectItems.length, modal: !!modal, overlay: !!overlay });
+    console.log('Project modal elements:', { 
+      projectItems: projectItems.length, 
+      modal: !!modal, 
+      overlay: !!overlay,
+      closeBtn: !!closeBtn,
+      liveLink: !!liveLink,
+      githubLink: !!githubLink
+    });
 
     function toggleProjectModal() {
       if (!modal || !overlay) return;
+      console.log('Toggling project modal');
       modal.classList.toggle('active');
       overlay.classList.toggle('active');
     }
 
-    projectItems.forEach(function (item) {
+    projectItems.forEach(function (item, index) {
       const openAnchor = item.querySelector('[data-project-open]') || item;
+      console.log(`Setting up project ${index}:`, { item: !!item, anchor: !!openAnchor });
+      
       openAnchor.addEventListener('click', function (e) {
         e.preventDefault();
+        e.stopPropagation();
         const live = item.getAttribute('data-live-url');
         const git = item.getAttribute('data-github-url');
+        console.log('Project clicked:', { live, git, index });
+        
         if (liveLink) liveLink.setAttribute('href', live || '#');
         if (githubLink) githubLink.setAttribute('href', git || '#');
-        console.log('Opening project modal with links:', { live, git });
+        
         toggleProjectModal();
       });
     });
 
-    if (closeBtn) closeBtn.addEventListener('click', toggleProjectModal);
-    if (overlay) overlay.addEventListener('click', toggleProjectModal);
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        toggleProjectModal();
+      });
+    }
+    if (overlay) {
+      overlay.addEventListener('click', function(e) {
+        e.preventDefault();
+        toggleProjectModal();
+      });
+    }
   })();
 
+  // Blog read modal: open popup with content
   (function () {
     const blogCards = document.querySelectorAll('.blog-post-item a[data-blog-open]');
     const modal = document.querySelector('[data-blog-modal]');
@@ -265,35 +292,72 @@ document.addEventListener('DOMContentLoaded', function() {
     const meta = document.querySelector('[data-blog-read-meta]');
     const text = document.querySelector('[data-blog-read-text]');
 
-    console.log('Blog modal elements:', { blogCards: blogCards.length, modal: !!modal, overlay: !!overlay });
+    console.log('Blog modal elements:', { 
+      blogCards: blogCards.length, 
+      modal: !!modal, 
+      overlay: !!overlay,
+      closeBtn: !!closeBtn,
+      img: !!img,
+      title: !!title,
+      meta: !!meta,
+      text: !!text
+    });
 
     function toggleBlogModal() {
       if (!modal || !overlay) return;
+      console.log('Toggling blog modal');
       modal.classList.toggle('active');
       overlay.classList.toggle('active');
     }
 
-    blogCards.forEach(function (card) {
+    blogCards.forEach(function (card, index) {
+      console.log(`Setting up blog ${index}:`, { card: !!card });
+      
       card.addEventListener('click', function (e) {
         e.preventDefault();
+        e.stopPropagation();
         const root = card.closest('.blog-post-item');
         if (!root) return;
+        
         const banner = root.querySelector('.blog-banner-box img');
         const titleElem = root.querySelector('.blog-item-title');
         const metaContainer = root.querySelector('.blog-meta');
         const desc = root.querySelector('.blog-text');
+
+        console.log('Blog clicked:', { 
+          banner: !!banner, 
+          titleElem: !!titleElem, 
+          metaContainer: !!metaContainer, 
+          desc: !!desc 
+        });
 
         if (img && banner) { img.src = banner.src; img.alt = banner.alt || ''; }
         if (title && titleElem) { title.textContent = titleElem.textContent || ''; }
         if (meta && metaContainer) { meta.innerHTML = metaContainer.innerHTML || ''; }
         if (text && desc) { text.textContent = desc.textContent || ''; }
 
-        console.log('Opening blog modal');
         toggleBlogModal();
       });
     });
 
-    if (closeBtn) closeBtn.addEventListener('click', toggleBlogModal);
-    if (overlay) overlay.addEventListener('click', toggleBlogModal);
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        toggleBlogModal();
+      });
+    }
+    if (overlay) {
+      overlay.addEventListener('click', function(e) {
+        e.preventDefault();
+        toggleBlogModal();
+      });
+    }
   })();
-});
+}
+
+// Call the function when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeNewFeatures);
+} else {
+  initializeNewFeatures();
+}

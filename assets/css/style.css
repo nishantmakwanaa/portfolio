@@ -247,10 +247,16 @@ main {
   max-height: 112px;
   overflow: hidden;
   transition: var(--transition-2);
+  min-height: 112px;
 }
 
 /* Allow expanded sidebar to grow when content wraps (e.g., multi-row social icons) */
-.sidebar.active { max-height: none; height: auto; }
+.sidebar.active { 
+  max-height: 1000px !important; 
+  height: auto !important;
+  min-height: auto !important;
+  overflow: visible !important;
+}
 
 .sidebar-info {
   position: relative;
@@ -364,6 +370,8 @@ main {
 
 .contact-info address { font-style: normal; }
 
+
+/* Social links grid: 7 per row, wrap to new row, container expands for multiple rows */
 .social-list {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -372,6 +380,27 @@ main {
   gap: 12px;
   padding-bottom: 6px;
   padding-left: 7px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* On mobile, ensure .sidebar expands for multi-row social-list */
+@media (max-width: 580px) {
+  .sidebar {
+    max-height: 112px;
+    height: auto;
+    overflow: hidden;
+  }
+  .sidebar.active {
+    max-height: 1000px !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .social-list {
+    grid-template-columns: repeat(7, 1fr);
+    /* grid auto-rows ensures container grows for more icons */
+    grid-auto-rows: 1fr;
+  }
 }
 
 .social-item .social-link { color: var(--light-gray-70); font-size: 18px; }
@@ -382,12 +411,16 @@ main {
 .sidebar.active .sidebar-info_more { 
   overflow: visible; 
   min-height: fit-content;
+  height: auto;
+  max-height: none;
 }
 
 
-/* On very small screens, prevent email overlap by truncating or hiding under phone */
-@media (max-width: 360px) {
-  .email-item .contact-link { display: none; }
+/* On very small screens, prevent email overlap by hiding email if it would overlap with phone */
+@media (max-width: 420px) {
+  .email-item .contact-link {
+    display: none;
+  }
 }
 
 /* Toast / notification for EmailJS feedback */
@@ -1404,9 +1437,15 @@ textarea.form-input::-webkit-resizer { display: none; }
   .sidebar {
     max-height: 180px;
     margin-bottom: 30px;
+    min-height: 180px;
   }
 
-  .sidebar.active { max-height: none; height: auto; }
+  .sidebar.active { 
+    max-height: 1000px !important; 
+    height: auto !important; 
+    min-height: auto !important;
+    overflow: visible !important; 
+  }
 
   .sidebar-info { gap: 25px; }
 
