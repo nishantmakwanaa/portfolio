@@ -209,3 +209,91 @@ function showToast(message, type = 'success', timeout = 6000) {
     try { if (container.contains(toast)) container.removeChild(toast); } catch (e) { /* ignore */ }
   }, timeout);
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Initializing new features...');
+  
+  document.querySelectorAll('.timeline-item[data-link]').forEach(function (item) {
+    item.style.cursor = 'pointer';
+    item.addEventListener('click', function () {
+      const url = item.getAttribute('data-link');
+      if (url) window.open(url, '_blank', 'noopener');
+    });
+  });
+  console.log('Timeline items initialized:', document.querySelectorAll('.timeline-item[data-link]').length);
+
+  (function () {
+    const projectItems = document.querySelectorAll('.project-item[data-live-url]');
+    const modal = document.querySelector('[data-project-modal]');
+    const overlay = document.querySelector('[data-project-overlay]');
+    const closeBtn = document.querySelector('[data-project-close-btn]');
+    const liveLink = document.querySelector('[data-live-link]');
+    const githubLink = document.querySelector('[data-github-link]');
+
+    console.log('Project modal elements:', { projectItems: projectItems.length, modal: !!modal, overlay: !!overlay });
+
+    function toggleProjectModal() {
+      if (!modal || !overlay) return;
+      modal.classList.toggle('active');
+      overlay.classList.toggle('active');
+    }
+
+    projectItems.forEach(function (item) {
+      const openAnchor = item.querySelector('[data-project-open]') || item;
+      openAnchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const live = item.getAttribute('data-live-url');
+        const git = item.getAttribute('data-github-url');
+        if (liveLink) liveLink.setAttribute('href', live || '#');
+        if (githubLink) githubLink.setAttribute('href', git || '#');
+        console.log('Opening project modal with links:', { live, git });
+        toggleProjectModal();
+      });
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', toggleProjectModal);
+    if (overlay) overlay.addEventListener('click', toggleProjectModal);
+  })();
+
+  (function () {
+    const blogCards = document.querySelectorAll('.blog-post-item a[data-blog-open]');
+    const modal = document.querySelector('[data-blog-modal]');
+    const overlay = document.querySelector('[data-blog-overlay]');
+    const closeBtn = document.querySelector('[data-blog-close-btn]');
+    const img = document.querySelector('[data-blog-read-img]');
+    const title = document.querySelector('[data-blog-read-title]');
+    const meta = document.querySelector('[data-blog-read-meta]');
+    const text = document.querySelector('[data-blog-read-text]');
+
+    console.log('Blog modal elements:', { blogCards: blogCards.length, modal: !!modal, overlay: !!overlay });
+
+    function toggleBlogModal() {
+      if (!modal || !overlay) return;
+      modal.classList.toggle('active');
+      overlay.classList.toggle('active');
+    }
+
+    blogCards.forEach(function (card) {
+      card.addEventListener('click', function (e) {
+        e.preventDefault();
+        const root = card.closest('.blog-post-item');
+        if (!root) return;
+        const banner = root.querySelector('.blog-banner-box img');
+        const titleElem = root.querySelector('.blog-item-title');
+        const metaContainer = root.querySelector('.blog-meta');
+        const desc = root.querySelector('.blog-text');
+
+        if (img && banner) { img.src = banner.src; img.alt = banner.alt || ''; }
+        if (title && titleElem) { title.textContent = titleElem.textContent || ''; }
+        if (meta && metaContainer) { meta.innerHTML = metaContainer.innerHTML || ''; }
+        if (text && desc) { text.textContent = desc.textContent || ''; }
+
+        console.log('Opening blog modal');
+        toggleBlogModal();
+      });
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', toggleBlogModal);
+    if (overlay) overlay.addEventListener('click', toggleBlogModal);
+  })();
+});
