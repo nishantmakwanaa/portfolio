@@ -116,18 +116,24 @@ const pages = document.querySelectorAll("[data-page]");
 
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
+    const clickedPage = this.innerHTML.toLowerCase();
 
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
+    // Remove active class from all navigation links and pages
+    navigationLinks.forEach(link => link.classList.remove("active"));
+    pages.forEach(page => page.classList.remove("active"));
+
+    // Add active class to clicked navigation link
+    this.classList.add("active");
+
+    // Find and activate the corresponding page
+    for (let j = 0; j < pages.length; j++) {
+      if (clickedPage === pages[j].dataset.page) {
+        pages[j].classList.add("active");
+        break;
       }
     }
 
+    window.scrollTo(0, 0);
   });
 }
 
@@ -270,15 +276,24 @@ function initializeNewFeatures() {
     if (closeBtn) {
       closeBtn.addEventListener('click', function(e) {
         e.preventDefault();
+        e.stopPropagation();
         toggleProjectModal();
       });
     }
     if (overlay) {
       overlay.addEventListener('click', function(e) {
         e.preventDefault();
+        e.stopPropagation();
         toggleProjectModal();
       });
     }
+    
+    // Add keyboard escape functionality
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+        toggleProjectModal();
+      }
+    });
     })();
   }, 200);
 
@@ -344,15 +359,24 @@ function initializeNewFeatures() {
     if (closeBtn) {
       closeBtn.addEventListener('click', function(e) {
         e.preventDefault();
+        e.stopPropagation();
         toggleBlogModal();
       });
     }
     if (overlay) {
       overlay.addEventListener('click', function(e) {
         e.preventDefault();
+        e.stopPropagation();
         toggleBlogModal();
       });
     }
+    
+    // Add keyboard escape functionality
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+        toggleBlogModal();
+      }
+    });
     })();
   }, 300);
 }

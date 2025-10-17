@@ -226,7 +226,7 @@ function renderTimelineSection(selector, items = []) {
     if (item.link) {
       li.setAttribute('data-link', item.link);
     }
-    const hasLink = item.link ? ` <ion-icon class="visit-arrow" name="arrow-forward-outline" aria-hidden="true"></ion-icon>` : '';
+    const hasLink = item.link ? ` <ion-icon class="visit-arrow" name="arrow-up-outline" aria-hidden="true"></ion-icon>` : '';
     const title = item.title ?? item.name ?? '';
     const period = item.period ?? '';
     const description = item.description ?? '';

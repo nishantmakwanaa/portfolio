@@ -430,24 +430,36 @@ main {
 }
 
 
+/* Email text overflow handling for all screen sizes */
+.email-item .contact-link {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+  display: inline-block;
+}
+
 @media (max-width: 600px) {
   .email-item .contact-link {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: calc(100% - 15px);
+    max-width: 160px;
   }
 }
 
 @media (max-width: 480px) {
   .email-item .contact-link {
-    max-width: calc(100% - 20px);
+    max-width: 140px;
+  }
+}
+
+@media (max-width: 400px) {
+  .email-item .contact-link {
+    max-width: 120px;
   }
 }
 
 @media (max-width: 360px) {
   .email-item .contact-link {
-    display: none;
+    max-width: 100px;
   }
   
   .header-row .btn {
@@ -568,14 +580,44 @@ main {
     padding: 14px 20px;
     font-size: var(--fs-6);
     border-radius: 14px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
   }
   
   .header-row .btn ion-icon {
     font-size: 18px;
+    margin-right: 8px;
   }
   
   .resume .timeline {
     margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-row .btn {
+    padding: 12px 16px;
+    font-size: var(--fs-7);
+    min-height: 45px;
+  }
+  
+  .header-row .btn ion-icon {
+    font-size: 16px;
+    margin-right: 6px;
+  }
+}
+
+@media (max-width: 360px) {
+  .header-row .btn {
+    padding: 10px 14px;
+    font-size: var(--fs-8);
+    min-height: 40px;
+  }
+  
+  .header-row .btn ion-icon {
+    font-size: 14px;
+    margin-right: 4px;
   }
 }
 
@@ -659,8 +701,32 @@ main {
   transition: var(--transition-1);
 }
 
-.timeline-item:hover .visit-arrow {
-  transform: rotate(45deg) scale(1.1);
+/* Timeline item with link styling */
+.timeline-item[data-link] {
+  cursor: pointer;
+  transition: var(--transition-1);
+}
+
+.timeline-item[data-link]:hover {
+  background: var(--bg-gradient-jet);
+  border-radius: 8px;
+  padding: 10px;
+  margin: -10px;
+}
+
+.timeline-item[data-link]:hover .timeline-item-title {
+  color: var(--orange-yellow-crayola);
+}
+
+.timeline-item[data-link] .visit-arrow {
+  color: var(--orange-yellow-crayola);
+  margin-left: 8px;
+  transition: var(--transition-1);
+}
+
+.timeline-item[data-link]:hover .visit-arrow {
+  transform: translateY(-2px) scale(1.1);
+  color: var(--vegas-gold);
 }
 
 /* Quick links modal for projects */
