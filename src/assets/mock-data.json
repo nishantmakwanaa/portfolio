@@ -150,19 +150,22 @@
                 "title": "Gujarat Technological University (GTU)",
                 "period": "Jul 2022 — Sep 2026",
                 "description": "Bachelor Of Engineering - BE, Information Technology — Grade: 8.26 CGPA. College: GyanManjari Institute Of Technology.",
-                "link": "https://www.gtu.ac.in/"
+                "link": "https://www.gtu.ac.in/",
+                "image": "./assets/images/gtu-logo.png"
             },
             {
                 "title": "Shree GyanGURU Vidhyapith",
                 "period": "Jul 2020 — Mar 2022",
                 "description": "Class XII, Science Stream.",
-                "link": "https://www.gyanguru.edu.in/"
+                "link": "https://www.gyanguru.edu.in/",
+                "image": "./assets/images/gyanguru-logo.png"
             },
             {
                 "title": "Shree Swaminarayan Gurukul Vidhyalay",
                 "period": "Jul 2019 — Mar 2020",
                 "description": "Class X, Primary School.",
-                "link": "https://www.swaminarayan.org/"
+                "link": "https://www.swaminarayan.org/",
+                "image": "./assets/images/gurukul-logo.png"
             }
         ],
         "experience": [
@@ -170,19 +173,22 @@
                 "title": "Software Engineer Intern",
                 "period": "Mar 2025 — Apr 2025 · 2 mos",
                 "description": "SynerSense® | सिनरसेंस® · Internship — Ahmedabad, Gujarat, India · Hybrid",
-                "link": "https://www.synersense.in/"
+                "link": "https://www.synersense.in/",
+                "image": "./assets/images/synersense.png"
             },
             {
                 "title": "Open-Source Contributor",
                 "period": "May 2024 — Jun 2024 · 2 mos",
                 "description": "GirlScript Summer Of Code · Internship — Nagpur, Maharashtra, India · Remote",
-                "link": "https://gssoc.girlscript.tech/"
+                "link": "https://gssoc.girlscript.tech/",
+                "image": "./assets/images/gssoc.png"
             },
             {
                 "title": "Java Developer - Intern",
                 "period": "Sep 2023 — Sep 2023 · 1 mo",
                 "description": "CodSoft · Internship — Kolkata, West Bengal, India · Remote",
-                "link": "https://www.codsoft.in/"
+                "link": "https://www.codsoft.in/",
+                "image": "./assets/images/codsoft.png"
             }
         ],
         "certifications": [
@@ -191,28 +197,32 @@
                 "issuer": "freeCodeCamp",
                 "period": "Issued Jun 2024",
                 "description": "Credential ID: nishantmakwanaa-mlwp",
-                "link": "https://www.freecodecamp.org/learn/machine-learning-with-python/"
+                "link": "https://www.freecodecamp.org/learn/machine-learning-with-python/",
+                "image": "./assets/images/freecodecamp.png"
             },
             {
                 "title": "Develop GenAI Apps With Gemini And Streamlit (Skill Badge)",
                 "issuer": "Google",
                 "period": "Issued May 2024",
                 "description": "",
-                "link": "https://www.cloudskillsboost.google/"
+                "link": "https://www.cloudskillsboost.google/",
+                "image": "./assets/images/google-cloud.png"
             },
             {
                 "title": "Prompt Design In Vertex AI (Skill Badge)",
                 "issuer": "Google",
                 "period": "Issued May 2024",
                 "description": "",
-                "link": "https://www.cloudskillsboost.google/"
+                "link": "https://www.cloudskillsboost.google/",
+                "image": "./assets/images/google-cloud.png"
             },
             {
                 "title": "Java (Basic) Certificate",
                 "issuer": "HackerRank",
                 "period": "Issued Apr 2024",
                 "description": "Credential ID: 40bf4c89f845",
-                "link": "https://www.hackerrank.com/skills-verification/java_basic"
+                "link": "https://www.hackerrank.com/skills-verification/java_basic",
+                "image": "./assets/images/hackerrank.png"
             }
         ],
         "languages": [
@@ -235,27 +245,64 @@
                 "issuer": "Start-Up India",
                 "period": "Issued Nov 2024",
                 "description": "S-VYASA University - Bengaluru",
-                "link": "https://www.startupindia.gov.in/"
+                "link": "https://www.startupindia.gov.in/",
+                "image": "./assets/images/startup-india.png"
             },
             {
                 "title": "Grand Finalist - New India Vibrant Hackathon 2023",
                 "issuer": "Student Start-Up And Innovation Policy",
                 "period": "Issued Nov 2023",
                 "description": "Pandit Deendayal Energy University - Gandhinagar",
-                "link": "https://www.pdpu.ac.in/"
+                "link": "https://www.pdpu.ac.in/",
+                "image": "./assets/images/ssip.png"
             }
         ],
         "skills": [
-            "Full-Stack Development",
-            "React.js, Next.js, React Native",
-            "Node.js, Express.js",
-            "JavaScript, TypeScript",
-            "HTML, CSS, Tailwind CSS",
-            "Python, Java",
-            "Machine Learning : Pandas, NumPy, Scikit-Learn, TensorFlow, PyTorch, Keras",
-            "Data Visualization: Matplotlib, Seaborn",
-            "DataBases : MongoDB, MySQL, PostgreSQL",
-            "Dev Tools : GitHub, Android Studio"
+            {
+                "category": "Frontend",
+                "items": [
+                    "React.js",
+                    "Next.js",
+                    "React Native",
+                    "HTML",
+                    "CSS",
+                    "Tailwind CSS",
+                    "JavaScript",
+                    "TypeScript"
+                ]
+            },
+            {
+                "category": "Backend",
+                "items": [
+                    "Node.js",
+                    "Express.js",
+                    "Python",
+                    "Java"
+                ]
+            },
+            {
+                "category": "Machine Learning",
+                "items": [
+                    "Pandas",
+                    "NumPy",
+                    "Scikit-Learn",
+                    "TensorFlow",
+                    "PyTorch",
+                    "Keras"
+                ]
+            },
+            {
+                "category": "Data & Tools",
+                "items": [
+                    "MongoDB",
+                    "MySQL",
+                    "PostgreSQL",
+                    "Matplotlib",
+                    "Seaborn",
+                    "GitHub",
+                    "Android Studio"
+                ]
+            }
         ]
     },
     "portfolio": {

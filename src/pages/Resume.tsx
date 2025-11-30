@@ -35,6 +35,11 @@ interface Honor {
     link?: string;
 }
 
+interface SkillCategory {
+    category: string;
+    items: string[];
+}
+
 interface ResumeProps {
     resume: {
         education: Education[];
@@ -42,7 +47,7 @@ interface ResumeProps {
         certifications: Certification[];
         languages: Language[];
         honors: Honor[];
-        skills: string[];
+        skills: SkillCategory[];
     };
 }
 
@@ -171,12 +176,21 @@ const Resume: React.FC<ResumeProps> = ({ resume }) => {
             <section className="skill">
                 <h3 className="h3 skills-title">My Skills</h3>
                 <ul className="skills-list content-card">
-                    {resume.skills.map((skill, index) => (
-                        <li className="skills-item" key={index}>
-                            <div className="title-wrapper">
-                                <h5 className="h5">{skill}</h5>
-                            </div>
-                        </li>
+                    {resume.skills.map((skillCategory, categoryIndex) => (
+                        <React.Fragment key={categoryIndex}>
+                            <li className="skills-item">
+                                <div className="title-wrapper">
+                                    <h4 className="h4">{skillCategory.category}</h4>
+                                </div>
+                            </li>
+                            {skillCategory.items.map((skill, itemIndex) => (
+                                <li className="skills-item" key={`${categoryIndex}-${itemIndex}`}>
+                                    <div className="title-wrapper">
+                                        <h5 className="h5">{skill}</h5>
+                                    </div>
+                                </li>
+                            ))}
+                        </React.Fragment>
                     ))}
                 </ul>
             </section>
