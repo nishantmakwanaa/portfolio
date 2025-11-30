@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import './App.css';
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import About from './pages/About';
