@@ -419,7 +419,14 @@ function bindProjectModalDelegation() {
   const githubLink = document.querySelector('[data-github-link]');
   if (!list || !modal || !overlay) return;
 
-  const toggle = () => { modal.classList.toggle('active'); overlay.classList.toggle('active'); };
+  const closeModal = () => {
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+  };
+  const openModal = () => {
+    modal.classList.add('active');
+    overlay.classList.add('active');
+  };
 
   // Delegate open on project list
   list.addEventListener('click', function (e) {
@@ -433,14 +440,18 @@ function bindProjectModalDelegation() {
     const git = item.getAttribute('data-github-url') || '#';
     if (liveLink) liveLink.setAttribute('href', live);
     if (githubLink) githubLink.setAttribute('href', git);
-    toggle();
+    openModal();
   }, { passive: false });
 
   // Ensure single bindings for close
   if (!modal.dataset.bound) {
     modal.dataset.bound = '1';
-    if (closeBtn) closeBtn.addEventListener('click', (ev) => { ev.preventDefault(); toggle(); });
-    overlay.addEventListener('click', (ev) => { ev.preventDefault(); toggle(); });
+    if (closeBtn) closeBtn.addEventListener('click', (ev) => { ev.preventDefault(); closeModal(); });
+    overlay.addEventListener('click', (ev) => { ev.preventDefault(); closeModal(); });
+    // Also close if clicking outside modal content
+    modal.addEventListener('mousedown', function(ev) {
+      if (ev.target === modal) closeModal();
+    });
   }
 }
 
@@ -455,7 +466,14 @@ function bindBlogModalDelegation() {
   const text = document.querySelector('[data-blog-read-text]');
   if (!list || !modal || !overlay) return;
 
-  const toggle = () => { modal.classList.toggle('active'); overlay.classList.toggle('active'); };
+  const closeModal = () => {
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+  };
+  const openModal = () => {
+    modal.classList.add('active');
+    overlay.classList.add('active');
+  };
 
   list.addEventListener('click', function (e) {
     const anchor = e.target.closest('[data-blog-open]');
@@ -472,12 +490,22 @@ function bindBlogModalDelegation() {
     if (title && titleElem) { title.textContent = titleElem.textContent || ''; }
     if (meta && metaContainer) { meta.innerHTML = metaContainer.innerHTML || ''; }
     if (text && desc) { text.textContent = desc.textContent || ''; }
-    toggle();
+    openModal();
   }, { passive: false });
 
   if (!modal.dataset.bound) {
     modal.dataset.bound = '1';
-    if (closeBtn) closeBtn.addEventListener('click', (ev) => { ev.preventDefault(); toggle(); });
-    overlay.addEventListener('click', (ev) => { ev.preventDefault(); toggle(); });
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function(ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        closeModal();
+      });
+    }
+    overlay.addEventListener('click', (ev) => { ev.preventDefault(); closeModal(); });
+    // Also close if clicking outside modal content
+    modal.addEventListener('mousedown', function(ev) {
+      if (ev.target === modal) closeModal();
+    });
   }
 }
