@@ -26,7 +26,7 @@ function App() {
           />
         );
       case 'resume':
-        return <Resume resume={mockData.resume} />;
+        return <Resume resume={mockData.resume} resumeUrl={mockData.personalInfo.resumeUrl} />;
       case 'portfolio':
         return <Portfolio portfolio={mockData.portfolio} />;
       case 'blogs':

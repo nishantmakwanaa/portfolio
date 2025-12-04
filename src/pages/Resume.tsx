@@ -49,9 +49,10 @@ interface ResumeProps {
         honors: Honor[];
         skills: SkillCategory[];
     };
+    resumeUrl?: string;
 }
 
-const Resume: React.FC<ResumeProps> = ({ resume }) => {
+const Resume: React.FC<ResumeProps> = ({ resume, resumeUrl }) => {
     return (
         <article className="resume active" data-page="resume">
             <header>
@@ -61,7 +62,7 @@ const Resume: React.FC<ResumeProps> = ({ resume }) => {
                     <a
                         id="download-resume-btn"
                         className="btn btn-primary"
-                        href="#"
+                        href={resumeUrl || "#"}
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Download Resume"
