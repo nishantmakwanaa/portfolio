@@ -2253,4 +2253,12 @@ textarea.form-input::-webkit-resizer {
     max-width: 700px;
   }
 
+  .resume .header-row {
+    align-items: flex-start;
+  }
+
+  .resume .header-row .btn {
+    margin-top: 60px;
+  }
+
 }
