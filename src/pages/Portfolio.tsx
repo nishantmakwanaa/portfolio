@@ -49,65 +49,75 @@ const Portfolio: React.FC<PortfolioProps> = ({ portfolio }) => {
             </header>
 
             <section className="projects">
-                <ul className="filter-list">
-                    {portfolio.categories.map((category) => (
-                        <li className="filter-item" key={category}>
+                {portfolio.projects.length > 0 && (
+                    <>
+                        <ul className="filter-list">
+                            {portfolio.categories.map((category) => (
+                                <li className="filter-item" key={category}>
+                                    <button
+                                        className={activeCategory === category ? 'active' : ''}
+                                        onClick={() => handleCategoryClick(category)}
+                                        data-filter-btn
+                                    >
+                                        {category}
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <div className="filter-select-box">
                             <button
-                                className={activeCategory === category ? 'active' : ''}
-                                onClick={() => handleCategoryClick(category)}
-                                data-filter-btn
+                                className={`filter-select ${isSelectOpen ? 'active' : ''}`}
+                                onClick={() => setIsSelectOpen(!isSelectOpen)}
+                                data-select
                             >
-                                {category}
+                                <div className="select-value" data-selecct-value>
+                                    {activeCategory === 'All' ? 'Select Category' : activeCategory}
+                                </div>
+                                <div className="select-icon">
+                                    <ion-icon name="chevron-down"></ion-icon>
+                                </div>
                             </button>
-                        </li>
-                    ))}
-                </ul>
 
-                <div className="filter-select-box">
-                    <button
-                        className={`filter-select ${isSelectOpen ? 'active' : ''}`}
-                        onClick={() => setIsSelectOpen(!isSelectOpen)}
-                        data-select
-                    >
-                        <div className="select-value" data-selecct-value>
-                            {activeCategory === 'All' ? 'Select Category' : activeCategory}
+                            <ul className="select-list">
+                                {portfolio.categories.map((category) => (
+                                    <li className="select-item" key={category}>
+                                        <button onClick={() => handleCategoryClick(category)} data-select-item>
+                                            {category}
+                                        </button>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
-                        <div className="select-icon">
-                            <ion-icon name="chevron-down"></ion-icon>
-                        </div>
-                    </button>
-
-                    <ul className="select-list">
-                        {portfolio.categories.map((category) => (
-                            <li className="select-item" key={category}>
-                                <button onClick={() => handleCategoryClick(category)} data-select-item>
-                                    {category}
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+                    </>
+                )}
 
                 <ul className="project-list">
-                    {filteredProjects.map((project, index) => (
-                        <li
-                            className="project-item active"
-                            data-filter-item
-                            data-category={project.category.toLowerCase()}
-                            key={index}
-                        >
-                            <a href="#" onClick={(e) => { e.preventDefault(); openModal(project); }}>
-                                <figure className="project-img">
-                                    <div className="project-item-icon-box">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </div>
-                                    <img src={project.image} alt={project.title} loading="lazy" />
-                                </figure>
-                                <h3 className="project-title">{project.title}</h3>
-                                <p className="project-category">{project.category}</p>
-                            </a>
+                    {filteredProjects.length > 0 ? (
+                        filteredProjects.map((project, index) => (
+                            <li
+                                className="project-item active"
+                                data-filter-item
+                                data-category={project.category.toLowerCase()}
+                                key={index}
+                            >
+                                <a href="#" onClick={(e) => { e.preventDefault(); openModal(project); }}>
+                                    <figure className="project-img">
+                                        <div className="project-item-icon-box">
+                                            <ion-icon name="eye-outline"></ion-icon>
+                                        </div>
+                                        <img src={project.image} alt={project.title} loading="lazy" />
+                                    </figure>
+                                    <h3 className="project-title">{project.title}</h3>
+                                    <p className="project-category">{project.category}</p>
+                                </a>
+                            </li>
+                        ))
+                    ) : (
+                        <li className="project-item active">
+                            <h3 className="h3" style={{ color: 'var(--white-2)' }}>Coming Soon...</h3>
                         </li>
-                    ))}
+                    )}
                 </ul>
             </section>
 
