@@ -1,0 +1,13 @@
+{
+  "githubUsername": "nishantmakwanaa",
+  "defaultCategory": "Web Development",
+  "projects": [
+    {
+      "repoName": "portfolio",
+      "customName": "Portfolio Website",
+      "category": "Web Development",
+      "enabled": true
+    }
+  ]
+}
+

@@ -10,4 +10,15 @@ export default defineConfig({
       },
     }),
   ],
+  server: {
+    cors: true,
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        // Ensure images are handled correctly
+        assetFileNames: 'assets/[name].[ext]'
+      }
+    }
+  }
 })
