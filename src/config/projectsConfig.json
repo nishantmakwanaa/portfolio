@@ -33,12 +33,6 @@
       "enabled": true
     },
     {
-      "repoName": "plant-disease-detection-app",
-      "customName": "Plant Disease Detection App",
-      "category": "Machine Learning",
-      "enabled": true
-    },
-    {
       "repoName": "voice-pc-controller",
       "customName": "Voice PC Controller",
       "category": "Artificial Intelligence",
