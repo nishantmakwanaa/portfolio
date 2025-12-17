@@ -61,7 +61,6 @@ function App() {
 
   const getPageSEO = () => {
     const baseUrl = 'https://nishantmakwanaa.github.io/';
-    const baseImage = 'https://nishantmakwanaa.github.io/assets/images/profile-picture.jpg';
     
     switch (activePage) {
       case 'about':
