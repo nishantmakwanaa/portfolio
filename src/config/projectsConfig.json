@@ -67,6 +67,48 @@
       "customName": "Clothing Store E-Commerce Website",
       "category": "Web Development",
       "enabled": true
+    },
+    {
+      "repoName": "waste-recycler",
+      "customName": "AI-Assisted E-Waste Recycler",
+      "category": "Artificial Intelligence",
+      "enabled": true
+    },
+    {
+      "repoName": "plant-disease-detection-app",
+      "customName": "Plant Disease Detection App",
+      "category": "Machine Learning",
+      "enabled": true
+    },
+    {
+      "repoName": "file-zipper",
+      "customName": "File Zipper Utility",
+      "category": "Data Structures & Algorithms",
+      "enabled": true
+    },
+    {
+      "repoName": "metro-app",
+      "customName": "Metro Route Navigation App",
+      "category": "Data Structures & Algorithms",
+      "enabled": true
+    },
+    {
+      "repoName": "sudoku-solver",
+      "customName": "Sudoku Solver",
+      "category": "Data Structures & Algorithms",
+      "enabled": true
+    },
+    {
+      "repoName": "learning-platform",
+      "customName": "Online Learning Platform",
+      "category": "Web Development",
+      "enabled": true
+    },
+    {
+      "repoName": "job-portal",
+      "customName": "Job Portal System",
+      "category": "Web Development",
+      "enabled": true
     }
   ]
 }
