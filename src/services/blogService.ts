@@ -20,17 +20,27 @@ export interface BlogPost {
  * Loads blog posts from LinkedIn based on configuration
  * Date is automatically fetched from LinkedIn posts
  * Uses caching to optimize performance
+ * OPTIMIZED: Returns cached data immediately, then updates in background
  */
 export async function loadBlogsFromLinkedIn(): Promise<BlogPost[]> {
   try {
-    // Check cache first
+    // Check cache first - return immediately if available
     const cached = getCachedBlogs();
     if (cached) {
-      console.log('Loading blogs from cache');
+      // Return cached data immediately, then refresh in background
+      const config = blogsConfig as BlogConfig;
+      transformLinkedInPostsToBlogPosts(config.posts)
+        .then((freshPosts) => {
+          cacheBlogs(freshPosts);
+        })
+        .catch((error) => {
+          console.warn('Background refresh failed, using cached data:', error);
+        });
+      
       return cached as BlogPost[];
     }
 
-    console.log('Fetching blogs from LinkedIn...');
+    // No cache available, fetch fresh data
     const config = blogsConfig as BlogConfig;
     const posts = await transformLinkedInPostsToBlogPosts(config.posts);
     
@@ -43,7 +53,6 @@ export async function loadBlogsFromLinkedIn(): Promise<BlogPost[]> {
     // Try to return cached data even on error
     const cached = getCachedBlogs();
     if (cached) {
-      console.log('Returning cached blogs due to error');
       return cached as BlogPost[];
     }
     return [];

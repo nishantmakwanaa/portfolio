@@ -10,8 +10,8 @@ interface CacheEntry<T> {
 }
 
 const CACHE_DURATION = {
-  PROJECTS: 30 * 60 * 1000, // 30 minutes (increased for better performance)
-  BLOGS: 10 * 60 * 1000, // 10 minutes
+  PROJECTS: 30 * 60 * 1000, // 30 minutes
+  BLOGS: 60 * 60 * 1000, // 60 minutes (increased for better performance - LinkedIn posts don't change frequently)
 };
 
 export class CacheService {

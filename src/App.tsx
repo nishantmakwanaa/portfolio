@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
+import SEO from './components/SEO';
 import About from './pages/About';
 import Resume from './pages/Resume';
 import Portfolio from './pages/Portfolio';
@@ -58,6 +59,52 @@ function App() {
     };
   }, [activePage]);
 
+  const getPageSEO = () => {
+    const baseUrl = 'https://nishantmakwanaa.github.io/';
+    const baseImage = 'https://nishantmakwanaa.github.io/assets/images/profile-picture.jpg';
+    
+    switch (activePage) {
+      case 'about':
+        return {
+          title: 'About | Nishant Makwana - Software Engineer',
+          description: 'Learn about Nishant Makwana, a Software Engineer passionate about web development, competitive programming, and creating innovative tech solutions.',
+          url: `${baseUrl}#about`,
+        };
+      case 'resume':
+        return {
+          title: 'Resume | Nishant Makwana - Software Engineer',
+          description: 'View the professional resume and experience of Nishant Makwana, including education, work experience, skills, and certifications.',
+          url: `${baseUrl}#resume`,
+        };
+      case 'portfolio':
+        return {
+          title: 'Portfolio | Nishant Makwana - Software Engineer',
+          description: 'Explore the portfolio of projects by Nishant Makwana, showcasing web development projects, GitHub repositories, and innovative tech solutions.',
+          url: `${baseUrl}#portfolio`,
+        };
+      case 'blogs':
+        return {
+          title: 'Blogs | Nishant Makwana - Software Engineer',
+          description: 'Read blogs and articles by Nishant Makwana about software engineering, web development, hackathons, and tech insights.',
+          url: `${baseUrl}#blogs`,
+        };
+      case 'contact':
+        return {
+          title: 'Contact | Nishant Makwana - Software Engineer',
+          description: 'Get in touch with Nishant Makwana. Contact information and ways to connect for collaborations, opportunities, or inquiries.',
+          url: `${baseUrl}#contact`,
+        };
+      default:
+        return {
+          title: 'Nishant Makwana - Software Engineer | Portfolio',
+          description: 'Portfolio of Nishant Makwana, a Software Engineer specializing in web development, competitive programming, and innovative tech solutions.',
+          url: baseUrl,
+        };
+    }
+  };
+
+  const pageSEO = getPageSEO();
+
   const renderPage = () => {
     switch (activePage) {
       case 'about':
@@ -89,6 +136,11 @@ function App() {
 
   return (
     <main>
+      <SEO
+        title={pageSEO.title}
+        description={pageSEO.description}
+        url={pageSEO.url}
+      />
       <Sidebar personalInfo={mockData.personalInfo} socialLinks={mockData.socialLinks} />
       <div className="main-content">
         <Navbar activePage={activePage} setActivePage={handlePageChange} />

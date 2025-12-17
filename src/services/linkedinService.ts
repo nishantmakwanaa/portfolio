@@ -13,6 +13,26 @@ export interface LinkedInPostConfig {
 }
 
 /**
+ * Fetches LinkedIn post data with timeout
+ */
+async function fetchWithTimeout(url: string, options: RequestInit = {}, timeoutMs: number = 10000): Promise<Response> {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+  
+  try {
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal,
+    });
+    clearTimeout(timeoutId);
+    return response;
+  } catch (error) {
+    clearTimeout(timeoutId);
+    throw error;
+  }
+}
+
+/**
  * Fetches metadata from a LinkedIn post URL
  * Uses Open Graph meta tags via CORS proxy
  * 
@@ -50,16 +70,15 @@ export async function fetchLinkedInPostData(url: string): Promise<LinkedInPostDa
     let htmlContent = '';
     let lastError: Error | null = null;
     
-    // Try each proxy until one works
+    // Try each proxy until one works (with timeout per proxy)
     for (const proxy of proxies) {
       try {
-        console.log(`Trying proxy: ${proxy.name}`);
-        const response = await fetch(proxy.url, {
+        const response = await fetchWithTimeout(proxy.url, {
           method: 'GET',
           headers: {
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
           },
-        });
+        }, 5000); // 5 second timeout per proxy
         
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}`);
@@ -77,11 +96,9 @@ export async function fetchLinkedInPostData(url: string): Promise<LinkedInPostDa
         }
         
         if (htmlContent && htmlContent.length > 100) {
-          console.log(`Successfully fetched HTML from ${proxy.name}, length: ${htmlContent.length}`);
           break; // Success, exit loop
         }
       } catch (error) {
-        console.warn(`Proxy ${proxy.name} failed:`, error);
         lastError = error as Error;
         continue; // Try next proxy
       }
@@ -193,6 +210,7 @@ export async function fetchLinkedInPostDataAlternative(_url: string): Promise<Li
 /**
  * Transforms LinkedIn post configs to blog posts
  * Date is automatically fetched from LinkedIn post
+ * OPTIMIZED: Fetches all posts in parallel for better performance
  */
 export async function transformLinkedInPostsToBlogPosts(
   configs: LinkedInPostConfig[]
@@ -204,13 +222,19 @@ export async function transformLinkedInPostsToBlogPosts(
   description: string;
   linkedinUrl?: string;
 }>> {
-  const posts = [];
+  // Filter enabled configs
+  const enabledConfigs = configs.filter(config => config.enabled);
   
-  for (const config of configs) {
-    if (!config.enabled) continue;
-    
+  // Fetch all posts in parallel with timeout
+  const fetchPromises = enabledConfigs.map(async (config) => {
     try {
-      const postData = await fetchLinkedInPostData(config.linkedinUrl);
+      // Use Promise.race with timeout to prevent hanging requests
+      const postData = await Promise.race([
+        fetchLinkedInPostData(config.linkedinUrl),
+        new Promise<null>((resolve) => 
+          setTimeout(() => resolve(null), 8000) // 8 second timeout per post
+        )
+      ]);
       
       if (postData) {
         // Use screenshot service as fallback if LinkedIn image is not available
@@ -218,40 +242,37 @@ export async function transformLinkedInPostsToBlogPosts(
         if (!imageUrl && config.linkedinUrl) {
           // Use screenshot service for LinkedIn post
           imageUrl = `https://image.thum.io/get/width/1280/crop/720/noanimate/${config.linkedinUrl}`;
-          console.log(`Using screenshot service for post: ${config.title}`);
         }
         
         // Always use date from LinkedIn post, fallback to current date if not available
         const postDate = postData.date || new Date().toISOString();
         
-        posts.push({
+        return {
           title: config.title, // Use custom title from config
           category: 'LinkedIn Post', // Default category
           date: postDate, // Always use date from LinkedIn post
           image: imageUrl,
           description: postData.description || '',
           linkedinUrl: config.linkedinUrl,
-        });
+        };
       } else {
-        // If fetch fails, use screenshot service for image
+        // If fetch fails or times out, use screenshot service for image
         let fallbackImage = '';
         if (config.linkedinUrl) {
           fallbackImage = `https://image.thum.io/get/width/1280/crop/720/noanimate/${config.linkedinUrl}`;
-          console.log(`Using screenshot service as fallback for post: ${config.title}`);
         }
         
-        // If fetch fails, create a post with minimal data
         // Try to extract date from URL or use current date
         const postDate = new Date().toISOString();
         
-        posts.push({
+        return {
           title: config.title,
           category: 'LinkedIn Post',
           date: postDate,
           image: fallbackImage,
           description: 'Click to view on LinkedIn',
           linkedinUrl: config.linkedinUrl,
-        });
+        };
       }
     } catch (error) {
       console.error(`Error processing LinkedIn post ${config.title}:`, error);
@@ -261,17 +282,23 @@ export async function transformLinkedInPostsToBlogPosts(
         fallbackImage = `https://image.thum.io/get/width/1280/crop/720/noanimate/${config.linkedinUrl}`;
       }
       
-      posts.push({
+      return {
         title: config.title,
         category: 'LinkedIn Post',
         date: new Date().toISOString(),
         image: fallbackImage,
         description: 'Click to view on LinkedIn',
         linkedinUrl: config.linkedinUrl,
-      });
+      };
     }
-  }
+  });
   
-  return posts;
+  // Wait for all posts to be fetched in parallel
+  const posts = await Promise.all(fetchPromises);
+  
+  // Filter out any null results and sort by date (newest first)
+  return posts
+    .filter((post): post is NonNullable<typeof post> => post !== null)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 

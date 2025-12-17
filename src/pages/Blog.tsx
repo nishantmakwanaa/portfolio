@@ -75,9 +75,41 @@ const Blog: React.FC<BlogProps> = ({ blog: blogProp }) => {
             <section className="blog-posts">
                 <ul className="blog-posts-list">
                     {loading ? (
-                        <li className="blog-post-item">
-                            <h3 className="h3" style={{ color: 'var(--white-2)' }}>Loading posts...</h3>
-                        </li>
+                        // Skeleton loading screens for better UX
+                        Array.from({ length: 4 }).map((_, index) => (
+                            <li className="blog-post-item" key={`skeleton-${index}`} style={{ opacity: 0.6 }}>
+                                <figure className="blog-banner-box" style={{ 
+                                    backgroundColor: 'var(--bg-color-2)', 
+                                    minHeight: '200px',
+                                    borderRadius: '8px',
+                                    animation: 'pulse 1.5s ease-in-out infinite'
+                                }}>
+                                    <div style={{ width: '100%', height: '100%', minHeight: '200px' }}></div>
+                                </figure>
+                                <div className="blog-content">
+                                    <div className="blog-meta" style={{ 
+                                        backgroundColor: 'var(--bg-color-2)', 
+                                        width: '100px', 
+                                        height: '20px',
+                                        borderRadius: '4px',
+                                        marginBottom: '10px'
+                                    }}></div>
+                                    <h3 className="h3 blog-item-title" style={{ 
+                                        backgroundColor: 'var(--bg-color-2)', 
+                                        width: '80%', 
+                                        height: '24px',
+                                        borderRadius: '4px',
+                                        marginBottom: '10px'
+                                    }}></h3>
+                                    <p className="blog-text" style={{ 
+                                        backgroundColor: 'var(--bg-color-2)', 
+                                        width: '100%', 
+                                        height: '60px',
+                                        borderRadius: '4px'
+                                    }}></p>
+                                </div>
+                            </li>
+                        ))
                     ) : posts.length > 0 ? (
                         posts.map((post, index) => {
                             const date = new Date(post.date);
@@ -101,6 +133,8 @@ const Blog: React.FC<BlogProps> = ({ blog: blogProp }) => {
                                                 src={post.image || 'https://via.placeholder.com/400x300?text=LinkedIn+Post'} 
                                                 alt={post.title} 
                                                 loading="lazy"
+                                                decoding="async"
+                                                fetchPriority={index < 2 ? "high" : "low"}
                                                 onError={(e) => {
                                                     const target = e.target as HTMLImageElement;
                                                     console.warn('Failed to load blog image:', post.image, 'for post:', post.title);
