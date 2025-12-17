@@ -7,7 +7,72 @@
       "customName": "Portfolio Website",
       "category": "Web Development",
       "enabled": true
+    },
+    {
+      "repoName": "fake-news-detection",
+      "customName": "Fake News Detection System",
+      "category": "Machine Learning",
+      "enabled": true
+    },
+    {
+      "repoName": "yoga-assistant",
+      "customName": "AI Yoga Assistant",
+      "category": "Artificial Intelligence",
+      "enabled": true
+    },
+    {
+      "repoName": "vigyat-agrostore",
+      "customName": "Vigyat AgroStore",
+      "category": "Web Development",
+      "enabled": true
+    },
+    {
+      "repoName": "code-editor",
+      "customName": "AI-Powered Code Editor",
+      "category": "Web Development",
+      "enabled": true
+    },
+    {
+      "repoName": "plant-disease-detection-app",
+      "customName": "Plant Disease Detection App",
+      "category": "Machine Learning",
+      "enabled": true
+    },
+    {
+      "repoName": "voice-pc-controller",
+      "customName": "Voice PC Controller",
+      "category": "Artificial Intelligence",
+      "enabled": true
+    },
+    {
+      "repoName": "tic-tac-toe",
+      "customName": "Tic Tac Toe Game",
+      "category": "Web Development",
+      "enabled": true
+    },
+    {
+      "repoName": "random-password-generator",
+      "customName": "Random Password Generator",
+      "category": "Web Development",
+      "enabled": true
+    },
+    {
+      "repoName": "algorithm-visualizer",
+      "customName": "Algorithm Visualizer",
+      "category": "Data Structures & Algorithms",
+      "enabled": true
+    },
+    {
+      "repoName": "qr-code-generator",
+      "customName": "QR Code Generator",
+      "category": "Web Development",
+      "enabled": true
+    },
+    {
+      "repoName": "clothing-store",
+      "customName": "Clothing Store E-Commerce Website",
+      "category": "Web Development",
+      "enabled": true
     }
   ]
 }
-

@@ -31,7 +31,22 @@ export interface Project {
  */
 export async function fetchGitHubRepos(username: string): Promise<GitHubRepo[]> {
   try {
-    const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
+    // Optimize API call - only fetch what we need, reduce per_page if user has many repos
+    // Add timeout to prevent hanging
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+    
+    const response = await fetch(
+      `https://api.github.com/users/${username}/repos?sort=updated&per_page=100&type=all`,
+      {
+        signal: controller.signal,
+        headers: {
+          'Accept': 'application/vnd.github.v3+json',
+        },
+      }
+    );
+    
+    clearTimeout(timeoutId);
     
     if (!response.ok) {
       throw new Error(`Failed to fetch repos: ${response.statusText}`);
@@ -40,7 +55,11 @@ export async function fetchGitHubRepos(username: string): Promise<GitHubRepo[]> 
     const repos: GitHubRepo[] = await response.json();
     return repos;
   } catch (error) {
-    console.error('Error fetching GitHub repos:', error);
+    if (error instanceof Error && error.name === 'AbortError') {
+      console.error('GitHub API request timed out');
+    } else {
+      console.error('Error fetching GitHub repos:', error);
+    }
     return [];
   }
 }

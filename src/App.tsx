@@ -9,10 +9,53 @@ import Contact from './pages/Contact';
 import mockData from './assets/mock-data.json';
 
 function App() {
-  const [activePage, setActivePage] = useState('about');
+  // Initialize activePage from URL hash or localStorage, default to 'about'
+  const getInitialPage = () => {
+    // Check URL hash first
+    if (window.location.hash) {
+      const hash = window.location.hash.substring(1); // Remove #
+      const validPages = ['about', 'resume', 'portfolio', 'blogs', 'contact'];
+      if (validPages.includes(hash)) {
+        return hash;
+      }
+    }
+    // Check localStorage
+    const savedPage = localStorage.getItem('activePage');
+    if (savedPage) {
+      const validPages = ['about', 'resume', 'portfolio', 'blogs', 'contact'];
+      if (validPages.includes(savedPage)) {
+        return savedPage;
+      }
+    }
+    return 'about';
+  };
+
+  const [activePage, setActivePage] = useState(getInitialPage());
+
+  // Update URL hash and localStorage when page changes
+  const handlePageChange = (page: string) => {
+    setActivePage(page);
+    window.location.hash = page;
+    localStorage.setItem('activePage', page);
+  };
 
   useEffect(() => {
+    // Listen for hash changes (back/forward buttons)
+    const handleHashChange = () => {
+      const hash = window.location.hash.substring(1);
+      const validPages = ['about', 'resume', 'portfolio', 'blogs', 'contact'];
+      if (hash && validPages.includes(hash)) {
+        setActivePage(hash);
+        localStorage.setItem('activePage', hash);
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
     window.scrollTo(0, 0);
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
   }, [activePage]);
 
   const renderPage = () => {
@@ -48,7 +91,7 @@ function App() {
     <main>
       <Sidebar personalInfo={mockData.personalInfo} socialLinks={mockData.socialLinks} />
       <div className="main-content">
-        <Navbar activePage={activePage} setActivePage={setActivePage} />
+        <Navbar activePage={activePage} setActivePage={handlePageChange} />
         {renderPage()}
       </div>
     </main>

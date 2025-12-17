@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ProjectModal from '../components/modals/ProjectModal';
 import { loadProjectsFromGitHub } from '../services/projectService';
 import type { Project } from '../services/projectService';
+import { getCachedProjects } from '../services/cacheService';
 
 interface PortfolioProps {
     portfolio?: {
@@ -19,33 +20,56 @@ const Portfolio: React.FC<PortfolioProps> = ({ portfolio: portfolioProp }) => {
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
     const [loading, setLoading] = useState(true);
 
-    // Load projects from GitHub on mount
+    // Load projects from GitHub on mount - optimized for performance
     useEffect(() => {
         const loadProjects = async () => {
-            setLoading(true);
-            try {
-                // Try to load from GitHub first
-                const githubProjects = await loadProjectsFromGitHub();
-                
-                if (githubProjects.length > 0) {
-                    setProjects(githubProjects);
-                    // Extract unique categories
-                    const uniqueCategories = ['All', ...Array.from(new Set(githubProjects.map(p => p.category)))];
-                    setCategories(uniqueCategories);
-                } else if (portfolioProp?.projects) {
-                    // Fallback to prop data if GitHub fetch fails
-                    setProjects(portfolioProp.projects);
-                    setCategories(portfolioProp.categories || ['All']);
-                }
-            } catch (error) {
-                console.error('Error loading projects:', error);
-                // Fallback to prop data on error
-                if (portfolioProp?.projects) {
-                    setProjects(portfolioProp.projects);
-                    setCategories(portfolioProp.categories || ['All']);
-                }
-            } finally {
+            // First, try to load from cache immediately for instant display
+            const cached = getCachedProjects();
+            
+            if (cached && Array.isArray(cached) && cached.length > 0) {
+                // Show cached data immediately
+                setProjects(cached as Project[]);
+                const uniqueCategories = ['All', ...Array.from(new Set(cached.map((p: Project) => p.category)))];
+                setCategories(uniqueCategories);
                 setLoading(false);
+                
+                // Then load fresh data in background
+                try {
+                    const githubProjects = await loadProjectsFromGitHub();
+                    if (githubProjects.length > 0) {
+                        setProjects(githubProjects);
+                        const freshCategories = ['All', ...Array.from(new Set(githubProjects.map(p => p.category)))];
+                        setCategories(freshCategories);
+                    }
+                } catch (error) {
+                    console.error('Error refreshing projects:', error);
+                    // Keep cached data on error
+                }
+            } else {
+                // No cache, load fresh data
+                setLoading(true);
+                try {
+                    const githubProjects = await loadProjectsFromGitHub();
+                    
+                    if (githubProjects.length > 0) {
+                        setProjects(githubProjects);
+                        const uniqueCategories = ['All', ...Array.from(new Set(githubProjects.map(p => p.category)))];
+                        setCategories(uniqueCategories);
+                    } else if (portfolioProp?.projects) {
+                        // Fallback to prop data if GitHub fetch fails
+                        setProjects(portfolioProp.projects);
+                        setCategories(portfolioProp.categories || ['All']);
+                    }
+                } catch (error) {
+                    console.error('Error loading projects:', error);
+                    // Fallback to prop data on error
+                    if (portfolioProp?.projects) {
+                        setProjects(portfolioProp.projects);
+                        setCategories(portfolioProp.categories || ['All']);
+                    }
+                } finally {
+                    setLoading(false);
+                }
             }
         };
 

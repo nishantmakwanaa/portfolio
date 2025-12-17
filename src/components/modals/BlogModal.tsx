@@ -6,6 +6,7 @@ interface BlogPost {
     date: string;
     image: string;
     description: string;
+    linkedinUrl?: string;
 }
 
 interface BlogModalProps {
@@ -37,13 +38,23 @@ const BlogModal: React.FC<BlogModalProps> = ({ isOpen, onClose, post }) => {
                         {post.title}
                     </h3>
                     <div className="blog-read-meta" data-blog-read-meta>
-                        <p className="blog-category">{post.category}</p>
-                        <span className="dot"></span>
                         <time dateTime={post.date}>{formattedDate}</time>
                     </div>
                     <p className="blog-read-text" data-blog-read-text>
                         {post.description}
                     </p>
+                    {post.linkedinUrl && (
+                        <a
+                            href={post.linkedinUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn btn-primary"
+                            style={{ marginTop: '1rem', display: 'inline-block' }}
+                        >
+                            <ion-icon name="logo-linkedin"></ion-icon>
+                            <span>View on LinkedIn</span>
+                        </a>
+                    )}
                 </div>
             </section>
         </div>
